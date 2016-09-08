@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tickets
+  resources :users
   resources :routes
   resources :trains
   resources :railway_stations
