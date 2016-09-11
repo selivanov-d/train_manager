@@ -1,17 +1,9 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% if @user.errors.any? %>
+        <%= render 'common/errors', resource: @user %>
+    <% end %>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="actions">
+      <%= f.submit 'Сохранить' %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

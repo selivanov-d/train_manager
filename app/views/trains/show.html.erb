@@ -1,9 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Номер:</strong>
   <%= @train.number %>
 </p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<p>
+  <strong>Маршрут:</strong>
+  <% if @train.route.present? %>
+      <%= link_to @train.route.name, route_path(@train.route) %>
+  <% else %>
+      Маршрут не назначен
+  <% end %>
+</p>
+
+<%= link_to 'Редактировать', edit_train_path(@train) %> |
+<%= link_to 'К списку поездов', trains_path %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tickets</h1>
+<h1>Список билетов</h1>
 
 <table>
   <thead>
@@ -12,9 +12,9 @@
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr>
-        <td><%= link_to 'Show', ticket %></td>
-        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Смотреть', ticket %></td>
+        <td><%= link_to 'Редактировать', edit_ticket_path(ticket) %></td>
+        <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Ticket', new_ticket_path %>
+<%= link_to 'Создать билет', new_ticket_path %>

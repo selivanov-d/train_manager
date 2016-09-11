@@ -7,8 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="header">
+    <div class="header_wrapper">
+      <nav class="main-menu">
+        <ul class="main-menu_wrapper">
+          <li class="main-menu_item"><%= link_to_unless_current 'Поезда', trains_path %></li>
+          <li class="main-menu_item"><%= link_to_unless_current 'Станции', railway_stations_path %></li>
+          <li class="main-menu_item"><%= link_to_unless_current 'Маршруты', routes_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<%= yield %>
+  <div class="content">
+    <%= yield %>
+  </div>
 
+  <footer class="footer">
+    <div class="footer_wrapper">
+      &copy; <%= Time.new.year %> Дмитрий Селиванов. Учебный проект в <%= link_to 'онлайн-школе Thinknetica', 'http://www.thinknetica.com/', target: '_blank' %>
+    </div>
+  </footer>
 </body>
 </html>
