@@ -10,7 +10,7 @@
 
     <div class="field">
       <%= f.label :route, 'Маршрут' %><br>
-      <%= f.collection_select :route_id, Route.all, :id, :name %>
+      <%= f.collection_select :route_id, Route.all, :id, :name, include_blank: 'Без маршрута' %>
     </div>
 
     <div class="actions">
