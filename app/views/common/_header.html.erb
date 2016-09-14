@@ -3,6 +3,7 @@
     <nav class="main-menu">
       <ul class="main-menu_wrapper">
         <li class="main-menu_item"><%= link_to_unless_current 'Поезда', trains_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current 'Вагоны', carriages_path %></li>
         <li class="main-menu_item"><%= link_to_unless_current 'Станции', railway_stations_path %></li>
         <li class="main-menu_item"><%= link_to_unless_current 'Маршруты', routes_path %></li>
       </ul>
