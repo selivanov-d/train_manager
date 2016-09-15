@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911174927) do
+ActiveRecord::Schema.define(version: 20160913174209) do
+
+  create_table "carriages", force: :cascade do |t|
+    t.integer  "type_id",                  null: false
+    t.integer  "train_id"
+    t.integer  "upper_seats",  default: 0, null: false
+    t.integer  "bottom_seats", default: 0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "railway_stations", force: :cascade do |t|
     t.datetime "created_at", null: false

@@ -1,0 +1,25 @@
+<%= form_for(@carriage) do |f| %>
+    <% if @carriage.errors.any? %>
+        <%= render 'common/errors', resource: @carriage %>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :type_id, 'Тип вагона' %><br>
+      <%= f.select :type_id, Carriage::TYPES.map { |_type_sym, type| [type[:name], type[:id]] } %>
+    </div>
+    <div class="field">
+      <%= f.label :train_id, 'Номер поезда' %><br>
+      <%= f.collection_select :train_id, Train.all, :id, :number, { include_blank: 'Не прицеплен к поезду' } %>
+    </div>
+    <div class="field">
+      <%= f.label :upper_seats, 'Верхних мест' %><br>
+      <%= f.number_field :upper_seats %>
+    </div>
+    <div class="field">
+      <%= f.label :bottom_seats, 'Нижних мест' %><br>
+      <%= f.number_field :bottom_seats %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Сохранить' %>
+    </div>
+<% end %>

@@ -14,5 +14,44 @@
   <% end %>
 </p>
 
+<% if @train.econom_carriages.present? || @train.business_carriages.present? %>
+    <% if @train.econom_carriages.present? %>
+        <p>
+          <strong>Плацкартных вагонов:</strong>
+          <%= @train.econom_carriages.size %>
+        </p>
+
+        <p>
+          <strong>Верхних мест:</strong>
+          <%= @train.count_seats(:econom, :upper) %><br>
+          <strong>Нижних мест:</strong>
+          <%= @train.count_seats(:econom, :bottom) %>
+        </p>
+    <% end %>
+
+    <% if @train.econom_carriages.present? && @train.business_carriages.present? %>
+        <hr>
+    <% end %>
+
+    <% if @train.business_carriages.present? %>
+        <p>
+          <strong>Купейных вагонов:</strong>
+          <%= @train.business_carriages.size %>
+        </p>
+
+        <p>
+          <strong>Верхних мест:</strong>
+          <%= @train.count_seats(:business, :upper) %><br>
+          <strong>Нижних мест:</strong>
+          <%= @train.count_seats(:business, :bottom) %>
+        </p>
+    <% end %>
+<% else %>
+    <p>
+      <strong>Вагонов:</strong>
+      нет
+    </p>
+<% end %>
+
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'К списку поездов', trains_path %>
