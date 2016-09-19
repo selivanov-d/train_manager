@@ -8,21 +8,21 @@
 <p>
   <strong>Поезд:</strong>
   <% if @carriage.train.present? %>
-    <%= link_to @carriage.train.number, @carriage.train %>
+      <%= link_to @carriage.train.number, @carriage.train %>
   <% else %>
       Не прицеплен к поезду
   <% end %>
 </p>
 
-<p>
-  <strong>Верхних мест:</strong>
-  <%= @carriage.upper_seats %>
-</p>
+<% if @carriage.train.present? %>
+    <p>
+      <strong>Номер в составе:</strong>
+      <%= @carriage.position %>
+    </p>
+<% end %>
 
-<p>
-  <strong>Нижних мест:</strong>
-  <%= @carriage.bottom_seats %>
-</p>
+<%= render "#{class_snake_case}_fields" %>
+
 
 <%= link_to 'Изменить', edit_carriage_path(@carriage) %> |
 <%= link_to 'К списку вагонов', carriages_path %>

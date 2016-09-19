@@ -20,7 +20,9 @@
   <strong>Станции этого маршрута:</strong>
   <% if @route.railway_stations.present? %>
     <ul>
-      <%= render partial: 'railway_stations/railway_station_as_list_item', collection: @route.railway_stations, as: :railway_station %>
+      <%= render partial: 'railway_stations/railway_station_as_list_item',
+          collection: @route.railway_stations.ordered,
+          as: :railway_station %>
     </ul>
 <% else %>
     Станций в маршруте нет

@@ -4,27 +4,39 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Тип</th>
-      <th>Поезд</th>
-      <th>Верхних мест</th>
-      <th>Нижних мест</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Тип</th>
+    <th>Поезд</th>
+    <th>Верхних мест</th>
+    <th>Нижних мест</th>
+    <th>Боковых верхних мест</th>
+    <th>Боковых нижних мест</th>
+    <th>Сидячих мест</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @carriages.each do |carriage| %>
+  <% @carriages.each do |carriage| %>
       <tr>
         <td><%= carriage.type_name %></td>
-        <td><%= link_to carriage.train.number, carriage.train %></td>
+        <td>
+          <% if carriage.train.present? %>
+              <%= link_to carriage.train.number, carriage.train %>
+          <% else %>
+              --
+          <% end %>
+        </td>
         <td><%= carriage.upper_seats %></td>
         <td><%= carriage.bottom_seats %></td>
+        <td><%= carriage.side_upper_seats %></td>
+        <td><%= carriage.side_bottom_seats %></td>
+        <td><%= carriage.seating_only_seats %></td>
         <td><%= link_to 'Смотреть', carriage %></td>
         <td><%= link_to 'Редактировать', edit_carriage_path(carriage) %></td>
         <td><%= link_to 'Удалить', carriage, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

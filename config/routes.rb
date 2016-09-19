@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   root 'trains#index'
 
   resources :carriages
+  resources :econom_class_carriages, controller: 'carriages', type: 'EconomClassCarriage'
+  resources :business_class_carriages, controller: 'carriages', type: 'BusinessClassCarriage'
+  resources :luxurious_class_carriages, controller: 'carriages', type: 'LuxuriousClassCarriage'
+  resources :seating_only_class_carriages, controller: 'carriages', type: 'SeatingOnlyClassCarriage'
+
   resources :tickets
   resources :users
   resources :routes
