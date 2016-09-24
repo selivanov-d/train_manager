@@ -2,7 +2,7 @@ class Carriage < ActiveRecord::Base
   belongs_to :train
 
   # OPTIMIZE: Не нашёл лучшего способа получить дочерние классы. Метод subclasses возвращает подклассы только если они хоть раз были инициализированы. Можно ещё опцией Rails.application.eager_load! принудительно загрузить все модели, но не уверен, что это правильный путь.
-  TYPES = [EconomClassCarriage, BusinessClassCarriage, LuxuriousClassCarriage, SeatingOnlyClassCarriage]
+  TYPES = [EconomClassCarriage, BusinessClassCarriage, LuxuriousClassCarriage, SeatingClassCarriage]
 
   validates :type, inclusion: { in: TYPES.map(&:to_s) }
   validates :type, presence: true
@@ -22,7 +22,7 @@ class Carriage < ActiveRecord::Base
   scope :econom_class, -> { where(type: 'EconomClassCarriage') }
   scope :business_class, -> { where(type: 'BusinessClassCarriage') }
   scope :luxurious_class, -> { where(type: 'LuxuriousClassCarriage') }
-  scope :seating_only_class, -> { where(type: 'SeatingOnlyClassCarriage') }
+  scope :seating_class, -> { where(type: 'SeatingClassCarriage') }
   scope :ordered_by, ->(position_from_head) { order(position: (position_from_head) ? :asc : :desc) }
   scope :ordered_by_position, -> { order(position: :asc) }
 

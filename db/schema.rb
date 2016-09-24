@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918192127) do
+ActiveRecord::Schema.define(version: 20160924063811) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "train_id"
-    t.integer  "upper_seats",        default: 0, null: false
-    t.integer  "bottom_seats",       default: 0, null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "upper_seats",       default: 0, null: false
+    t.integer  "bottom_seats",      default: 0, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "type"
-    t.integer  "side_bottom_seats",  default: 0
-    t.integer  "side_upper_seats",   default: 0
-    t.integer  "seating_only_seats", default: 0
+    t.integer  "side_bottom_seats", default: 0
+    t.integer  "side_upper_seats",  default: 0
+    t.integer  "seating_seats",     default: 0
     t.integer  "position"
   end
 
