@@ -41,7 +41,6 @@ class Carriage < ActiveRecord::Base
   def max_position_for_train(train_id)
     max_position = Carriage.where(train_id: train_id).maximum('position')
     max_position ||= 0
-    max_position
   end
 
   def class_name_in_snake_case
