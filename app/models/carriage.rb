@@ -18,6 +18,7 @@ class Carriage < ActiveRecord::Base
   before_validation :before_validation_assign_position, if: :attached_to_train?
   before_validation :before_validation_remove_position, unless: :attached_to_train?
   after_update :after_update_update_train_carriages_positions
+  after_destroy :after_destroy_update_train_carriages_positions
 
   scope :econom, -> { where(type: 'Carriage::Econom') }
   scope :business, -> { where(type: 'Carriage::Business') }
@@ -62,14 +63,17 @@ class Carriage < ActiveRecord::Base
   end
 
   def after_update_update_train_carriages_positions
-    if !new_record? && train_id_changed?
+    if persisted? && train_id_changed?
       ex_train_id = changes[:train_id][0]
 
       unless ex_train_id.nil?
         train = Train.find(ex_train_id)
-
         train.update_carriages_positions
       end
     end
+  end
+
+  def after_destroy_update_train_carriages_positions
+    train.update_carriages_positions
   end
 end
