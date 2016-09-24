@@ -1,24 +1,59 @@
-<%= form_for(@carriage) do |f| %>
+<%= form_for(@carriage.becomes(Carriage)) do |f| %>
+    <%= hidden_field_tag :step, 1 %>
+
     <% if @carriage.errors.any? %>
         <%= render 'common/errors', resource: @carriage %>
     <% end %>
 
     <div class="field">
-      <%= f.label :type_id, 'Тип вагона' %><br>
-      <%= f.select :type_id, Carriage::TYPES.map { |_type_sym, type| [type[:name], type[:id]] } %>
+      <%= f.label :type, 'Тип вагона' %><br>
+      <%= f.select :type, Carriage.types, { include_blank: '---' }, class: 'js-carriage-type-selector' %>
     </div>
     <div class="field">
       <%= f.label :train_id, 'Номер поезда' %><br>
-      <%= f.collection_select :train_id, Train.all, :id, :number, { include_blank: 'Не прицеплен к поезду' } %>
+      <%= f.collection_select :train_id, Train.select(:id, :number).all, :id, :number, { include_blank: 'Не прицеплен к поезду' } %>
     </div>
-    <div class="field">
+
+    <div class="field carriage-field js-carriage-form-field js-econom-carriage-form-field js-business-carriage-form-field">
       <%= f.label :upper_seats, 'Верхних мест' %><br>
       <%= f.number_field :upper_seats %>
     </div>
-    <div class="field">
+
+    <div class="field carriage-field js-carriage-form-field js-econom-carriage-form-field js-business-carriage-form-field js-luxurious-carriage-form-field">
       <%= f.label :bottom_seats, 'Нижних мест' %><br>
       <%= f.number_field :bottom_seats %>
     </div>
+
+    <div class="field carriage-field js-carriage-form-field js-econom-carriage-form-field">
+      <%= f.label :side_upper_seats, 'Боковых верхних мест' %><br>
+      <%= f.number_field :side_upper_seats %>
+    </div>
+
+    <div class="field carriage-field js-carriage-form-field js-econom-carriage-form-field">
+      <%= f.label :side_bottom_seats, 'Боковых нижних мест' %><br>
+      <%= f.number_field :side_bottom_seats %>
+    </div>
+
+    <div class="field carriage-field js-carriage-form-field js-seating-carriage-form-field">
+      <%= f.label :seating_seats, 'Сидячих мест' %><br>
+      <%= f.number_field :seating_seats %>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+      $(document).on('ready', function () {
+        <% if defined? class_name %>
+          $('.js-<%= class_name %>-carriage-form-field').addClass('-visible');
+        <% end %>
+
+        $('.js-carriage-type-selector').on('change', function () {
+          var class_name = $(this).val().split('::')[1].toLowerCase();
+          $('.js-carriage-form-field').removeClass('-visible');
+
+          $('.js-' + class_name + '-carriage-form-field').addClass('-visible');
+        })
+      });
+    </script>
+
     <div class="actions">
       <%= f.submit 'Сохранить' %>
     </div>

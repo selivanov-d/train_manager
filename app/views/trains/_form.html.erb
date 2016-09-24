@@ -9,8 +9,13 @@
     </div>
 
     <div class="field">
+      <%= f.check_box :position_from_head %>
+      <%= f.label :position_from_head, 'Нумерация с головы поезда' %>
+    </div>
+
+    <div class="field">
       <%= f.label :route, 'Маршрут' %><br>
-      <%= f.collection_select :route_id, Route.all, :id, :name, include_blank: 'Без маршрута' %>
+      <%= f.collection_select :route_id, Route.select(:id, :name).all, :id, :name, include_blank: 'Без маршрута' %>
     </div>
 
     <div class="actions">

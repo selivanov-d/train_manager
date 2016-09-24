@@ -6,6 +6,7 @@ class CarriagesController < ApplicationController
   end
 
   def show
+    render :show, locals: { class_snake_case: @carriage.class_name_in_snake_case }
   end
 
   def new
@@ -13,13 +14,14 @@ class CarriagesController < ApplicationController
   end
 
   def edit
+    render :edit, locals: { class_name: @carriage.class.name.demodulize }
   end
 
   def create
     @carriage = Carriage.new(carriage_params)
 
     if @carriage.save
-      redirect_to @carriage, notice: 'Вагон создан!'
+      redirect_to carriage_url(@carriage), notice: 'Вагон создан!'
     else
       render :new
     end
@@ -27,9 +29,9 @@ class CarriagesController < ApplicationController
 
   def update
     if @carriage.update(carriage_params)
-      redirect_to @carriage, notice: 'Вагон обновлён!'
+      redirect_to carriage_path(@carriage), notice: 'Вагон обновлён!'
     else
-      render :edit
+      render :edit, locals: { class_name: @carriage.class.to_s }
     end
   end
 
@@ -45,6 +47,19 @@ class CarriagesController < ApplicationController
   end
 
   def carriage_params
-    params.require(:carriage).permit(:type_id, :train_id, :upper_seats, :bottom_seats)
+    base_allowed_params = [:type, :train_id, :position]
+
+    received_carriage_params = params.require(:carriage)
+
+    klass = received_carriage_params[:type].constantize
+
+    type_specific_allowed_params =
+      if Carriage::TYPES.include? klass
+        klass::SEATS_TYPES_ATTRIBUTES_NAMES
+      else
+        raise ArgumentError
+      end
+
+    received_carriage_params.permit(base_allowed_params + type_specific_allowed_params)
   end
 end

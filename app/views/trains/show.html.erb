@@ -14,38 +14,11 @@
   <% end %>
 </p>
 
-<% if @train.econom_carriages.present? || @train.business_carriages.present? %>
-    <% if @train.econom_carriages.present? %>
-        <p>
-          <strong>Плацкартных вагонов:</strong>
-          <%= @train.econom_carriages.size %>
-        </p>
-
-        <p>
-          <strong>Верхних мест:</strong>
-          <%= @train.count_seats(:econom, :upper) %><br>
-          <strong>Нижних мест:</strong>
-          <%= @train.count_seats(:econom, :bottom) %>
-        </p>
-    <% end %>
-
-    <% if @train.econom_carriages.present? && @train.business_carriages.present? %>
-        <hr>
-    <% end %>
-
-    <% if @train.business_carriages.present? %>
-        <p>
-          <strong>Купейных вагонов:</strong>
-          <%= @train.business_carriages.size %>
-        </p>
-
-        <p>
-          <strong>Верхних мест:</strong>
-          <%= @train.count_seats(:business, :upper) %><br>
-          <strong>Нижних мест:</strong>
-          <%= @train.count_seats(:business, :bottom) %>
-        </p>
-    <% end %>
+<% if @train.carriages.present? %>
+    <%= render partial: 'carriages/carriage_as_list_item',
+        collection: @train.carriages.ordered_by(@train.position_from_head),
+        as: :carriage
+    %>
 <% else %>
     <p>
       <strong>Вагонов:</strong>
