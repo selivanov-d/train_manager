@@ -14,7 +14,7 @@ class CarriagesController < ApplicationController
   end
 
   def edit
-    render :edit, locals: { class_name: @carriage.class.to_s }
+    render :edit, locals: { class_name: @carriage.class.name.demodulize }
   end
 
   def create
@@ -29,7 +29,7 @@ class CarriagesController < ApplicationController
 
   def update
     if @carriage.update(carriage_params)
-      redirect_to @carriage, notice: 'Вагон обновлён!'
+      redirect_to carriage_path(@carriage), notice: 'Вагон обновлён!'
     else
       render :edit, locals: { class_name: @carriage.class.to_s }
     end

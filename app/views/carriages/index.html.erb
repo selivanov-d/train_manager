@@ -32,9 +32,9 @@
         <td><%= carriage.side_upper_seats %></td>
         <td><%= carriage.side_bottom_seats %></td>
         <td><%= carriage.seating_seats %></td>
-        <td><%= link_to 'Смотреть', carriage %></td>
+        <td><%= link_to 'Смотреть', carriage_path(carriage) %></td>
         <td><%= link_to 'Редактировать', edit_carriage_path(carriage) %></td>
-        <td><%= link_to 'Удалить', carriage, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <td><%= link_to 'Удалить', carriage_path(carriage), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>
   <% end %>
   </tbody>

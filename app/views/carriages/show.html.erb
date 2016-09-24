@@ -21,8 +21,7 @@
     </p>
 <% end %>
 
-<%= render "#{class_snake_case}_fields" %>
-
+<%= render "carriages/#{class_snake_case}_fields" %>
 
 <%= link_to 'Изменить', edit_carriage_path(@carriage) %> |
 <%= link_to 'К списку вагонов', carriages_path %>

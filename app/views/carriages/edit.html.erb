@@ -2,5 +2,5 @@
 
 <%= render partial: 'form', locals: { class_name: class_name } %>
 
-<%= link_to 'Смотреть', @carriage %> |
+<%= link_to 'Смотреть', carriage_path(@carriage) %> |
 <%= link_to 'К списку вагонов', carriages_path %>
