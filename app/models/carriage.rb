@@ -1,7 +1,6 @@
 class Carriage < ActiveRecord::Base
   belongs_to :train
 
-  # OPTIMIZE: Не нашёл лучшего способа получить дочерние классы. Метод subclasses возвращает подклассы только если они хоть раз были инициализированы. Можно ещё опцией Rails.application.eager_load! принудительно загрузить все модели, но не уверен, что это правильный путь.
   TYPES = [Carriage::Econom, Carriage::Business, Carriage::Luxurious, Carriage::Seating]
 
   validates :type, inclusion: { in: TYPES.map(&:to_s) }

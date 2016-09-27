@@ -1,7 +1,13 @@
 <%= form_for(@user) do |f| %>
-    <% if @user.errors.any? %>
-        <%= render 'common/errors', resource: @user %>
-    <% end %>
+    <div class="field">
+      <%= f.label :first_name, 'Имя' %><br>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :family_name, 'Фамилия' %><br>
+      <%= f.text_field :family_name %>
+    </div>
 
     <div class="actions">
       <%= f.submit 'Сохранить' %>

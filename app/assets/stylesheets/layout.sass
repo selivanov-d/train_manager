@@ -12,6 +12,37 @@
     margin: 0 auto
     padding: 0 15px
 
+.notice-panel
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+  background-color: #fff
+  animation-name: notice_panel_hide_animation
+  animation-delay: 3s
+  animation-duration: .5s
+  animation-fill-mode: forwards
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, .2)
+
+  &_wrapper
+    max-width: 960px
+    margin: 0 auto
+    min-height: 70px
+    padding: 10px 20px
+
+  .error
+    color: red
+
+  .notice
+    color: green
+
+@keyframes notice_panel_hide_animation
+  0%
+    transform: translateY(0)
+  100%
+    transform: translateY(-110%)
+
+
 
 
 

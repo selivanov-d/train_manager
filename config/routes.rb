@@ -1,17 +1,37 @@
 Rails.application.routes.draw do
-  root 'trains#index'
+  get 'searches/new'
 
-  resources :carriages
-  resources :econom_carriages, controller: 'carriages', type: 'Carriage::Econom'
-  resources :business_carriages, controller: 'carriages', type: 'Carriage::Business'
-  resources :luxurious_carriages, controller: 'carriages', type: 'Carriage::Luxurious'
-  resources :seating_carriages, controller: 'carriages', type: 'Carriage::Seating'
+  get 'new/show'
+
+  get 'new/edit'
+
+  root 'trains#index'
 
   resources :tickets
   resources :users
   resources :routes
-  resources :trains
-  resources :railway_stations
+
+  resources :trains do
+    resources :carriages, shallow: true
+
+    resources :econom_carriages, controller: 'carriages', type: 'Carriage::Econom', shallow: true
+    resources :business_carriages, controller: 'carriages', type: 'Carriage::Business', shallow: true
+    resources :luxurious_carriages, controller: 'carriages', type: 'Carriage::Luxurious', shallow: true
+    resources :seating_carriages, controller: 'carriages', type: 'Carriage::Seating', shallow: true
+  end
+
+  resources :railway_stations do
+    patch :update_position, on: :member
+    patch :update_arrival_datetime, on: :member
+    patch :update_departure_datetime, on: :member
+  end
+
+  resource :search do
+    get '/' => 'searches#new'
+    post '/' => 'searches#show_results'
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

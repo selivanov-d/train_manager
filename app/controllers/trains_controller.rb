@@ -21,6 +21,7 @@ class TrainsController < ApplicationController
     if @train.save
       redirect_to @train, notice: 'Поезд создан!'
     else
+      flash.alert = get_errors_as_array_of_strings_for(@train)
       render :new
     end
   end
@@ -29,6 +30,7 @@ class TrainsController < ApplicationController
     if @train.update(train_params)
       redirect_to @train, notice: 'Поезд обновлён!'
     else
+      flash.alert = get_errors_as_array_of_strings_for(@train)
       render :edit
     end
   end

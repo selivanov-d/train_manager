@@ -1,0 +1,25 @@
+<h1>Поиск поездов по маршруту "<%= station_name_by_id(@search.departure_station_id) %>–<%= station_name_by_id(@search.arrival_station_id) %>"</h1>
+
+<%= render 'form' %>
+
+<% if @search.valid? && @search.result.present? %>
+    <table>
+      <thead>
+      <th>Номер поезда</th>
+      <th>Маршрут</th>
+      <th>Время отправления<br/><span class="station-name-comment">со станции "<%= station_name_by_id(@search.departure_station_id) %>"</span></th>
+      <th>Время прибытия<br/><span class="station-name-comment">на станции "<%= station_name_by_id(@search.arrival_station_id) %>"</span></th>
+      <th></th>
+      </thead>
+      <tbody>
+      <%= render partial: 'result_item', collection: @search.result, as: :train,
+          locals: {
+            start_station_id: @search.departure_station_id,
+            finish_station_id: @search.arrival_station_id
+          } %>
+      </tbody>
+    </table>
+<% else %>
+    <p>По заданным критериям не найдено ни одного поезда.</p>
+<% end %>
+

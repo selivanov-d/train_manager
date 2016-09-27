@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Название:</strong>
   <%= @route.name %>
@@ -19,11 +17,19 @@
 <p>
   <strong>Станции этого маршрута:</strong>
   <% if @route.railway_stations.present? %>
-    <ul>
-      <%= render partial: 'railway_stations/railway_station_as_list_item',
+    <table class="route-stations">
+      <thead>
+      <th>Позиция</th>
+      <th>Название</th>
+      <th>Время прибытия</th>
+      <th>Время отправления</th>
+      </thead>
+      <tbody>
+      <%= render partial: 'railway_stations/railway_station_as_table_row',
           collection: @route.railway_stations.ordered,
           as: :railway_station %>
-    </ul>
+      </tbody>
+    </table>
 <% else %>
     Станций в маршруте нет
 <% end %>

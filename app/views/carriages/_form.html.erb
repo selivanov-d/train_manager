@@ -1,17 +1,9 @@
-<%= form_for(@carriage.becomes(Carriage)) do |f| %>
-    <%= hidden_field_tag :step, 1 %>
-
-    <% if @carriage.errors.any? %>
-        <%= render 'common/errors', resource: @carriage %>
-    <% end %>
+<%= form_for [@train, @carriage] do |f| %>
+    <%= f.hidden_field :train_id, value: @train.id %>
 
     <div class="field">
       <%= f.label :type, 'Тип вагона' %><br>
       <%= f.select :type, Carriage.types, { include_blank: '---' }, class: 'js-carriage-type-selector' %>
-    </div>
-    <div class="field">
-      <%= f.label :train_id, 'Номер поезда' %><br>
-      <%= f.collection_select :train_id, Train.select(:id, :number).all, :id, :number, { include_blank: 'Не прицеплен к поезду' } %>
     </div>
 
     <div class="field carriage-field js-carriage-form-field js-econom-carriage-form-field js-business-carriage-form-field">
