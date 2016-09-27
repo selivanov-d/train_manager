@@ -14,8 +14,8 @@
       <tbody>
       <%= render partial: 'result_item', collection: @search.result, as: :train,
           locals: {
-            start_station_id: @search.departure_station_id,
-            finish_station_id: @search.arrival_station_id
+            departure_station_id: @search.departure_station_id,
+              arrival_station_id: @search.arrival_station_id
           } %>
       </tbody>
     </table>

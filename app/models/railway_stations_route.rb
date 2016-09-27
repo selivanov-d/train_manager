@@ -2,7 +2,9 @@ class RailwayStationsRoute < ActiveRecord::Base
   belongs_to :railway_station
   belongs_to :route
 
-  before_create :before_create_assign_position
+  # REVIEW: не разобрался до конца почему эта валидация срабатывает 2n раз при сохранении родительской модели (Route)
+  # Позиции присваиваются верно, но сам метод отрабатывает больше раз чем нужно.
+  before_validation :before_validation_assign_position, on: :create
 
   validates :route_id, uniqueness: { scope: :railway_station_id }
   validates :position, numericality: {
@@ -48,7 +50,7 @@ class RailwayStationsRoute < ActiveRecord::Base
 
   private
 
-  def before_create_assign_position
+  def before_validation_assign_position
     max_position = self.class.where(route_id: route_id).maximum('position')
     max_position ||= 0
     self.position = max_position + 1

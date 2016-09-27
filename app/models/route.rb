@@ -1,6 +1,8 @@
 class Route < ActiveRecord::Base
-  has_many :trains
-  has_many :railway_stations_routes
+  # REVIEW: здесь и в других моделях по уму надо бы сделать запрет на удаление маршрута если на нём есть поезда,
+  # но, думаю, это уже сильно за гранью учебного проекта.
+  has_many :trains, dependent: :nullify
+  has_many :railway_stations_routes, dependent: :destroy
   has_many :railway_stations, through: :railway_stations_routes
 
   validates :name, presence: { message: 'У маршрута должно быть название' }

@@ -1,7 +1,7 @@
 <%= form_for(@ticket) do |f| %>
     <%= f.hidden_field :train_id, value: @train_id %>
-    <%= f.hidden_field :start_station_id, value: @start_station_id %>
-    <%= f.hidden_field :finish_station_id, value: @finish_station_id %>
+    <%= f.hidden_field :departure_station_id, value: @departure_station_id %>
+    <%= f.hidden_field :arrival_station_id, value: @arrival_station_id %>
 
     <div class="field">
       <%= label_tag :buyer_first_name, 'Имя покупателя' %><br>

@@ -12,8 +12,8 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new
 
     @train_id = params[:train_id]
-    @start_station_id = params[:start_station_id]
-    @finish_station_id = params[:finish_station_id]
+    @departure_station_id = params[:departure_station_id]
+    @arrival_station_id = params[:arrival_station_id]
 
     render :new
   end
@@ -52,6 +52,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:train_id, :start_station_id, :finish_station_id)
+    params.require(:ticket).permit(:train_id, :departure_station_id, :arrival_station_id)
   end
 end
