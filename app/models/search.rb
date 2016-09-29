@@ -1,21 +1,9 @@
 class Search
   include ActiveModel::Model
 
-  attr_accessor :departure_station_id, :arrival_station_id
+  attr_accessor :departure_station_id, :arrival_station_id, :result
 
   validate :departure_and_arrival_station_must_not_be_same
-
-  def result
-    @result ||= make_search
-  end
-
-  private
-
-  def departure_and_arrival_station_must_not_be_same
-    if departure_station_id == arrival_station_id
-      errors.add(:base, 'Начальная и конечная станции должны различаться!')
-    end
-  end
 
   def make_search
     routes_with_departure_station = RailwayStation.find(departure_station_id).routes.to_a
@@ -34,6 +22,14 @@ class Search
       end
 
       trains
+    end
+  end
+
+  private
+
+  def departure_and_arrival_station_must_not_be_same
+    if departure_station_id == arrival_station_id
+      errors.add(:base, 'Начальная и конечная станции должны различаться!')
     end
   end
 end

@@ -5,7 +5,13 @@ class SearchesController < ApplicationController
 
   def show_results
     @search = Search.new(search_params)
-    flash.alert = get_errors_as_array_of_strings_for(@search) if @search.invalid?
+
+    if @search.invalid?
+      flash.alert = get_errors_as_array_of_strings_for(@search)
+      redirect_to new_search_path
+    end
+
+    @search.result = @search.make_search
   end
 
   private
