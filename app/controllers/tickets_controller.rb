@@ -10,26 +10,33 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
-  end
 
-  def edit
+    @train_id = params[:train_id]
+    @departure_station_id = params[:departure_station_id]
+    @arrival_station_id = params[:arrival_station_id]
+
+    render :new
   end
 
   def create
     @ticket = Ticket.new(ticket_params)
 
+    user = User.find_or_initialize_by(first_name: params[:buyer_first_name], family_name: params[:buyer_second_name])
+
+    if user.new_record?
+      unless user.save
+        flash.alert = get_errors_as_array_of_strings_for(user)
+        render :new
+      end
+    end
+
+    @ticket.user_id = user.id
+
     if @ticket.save
       redirect_to @ticket, notice: 'Билет создан!'
     else
+      flash.alert = get_errors_as_array_of_strings_for(@ticket)
       render :new
-    end
-  end
-
-  def update
-    if @ticket.update(ticket_params)
-      redirect_to @ticket, notice: 'Билет обновлён!'
-    else
-      render :edit
     end
   end
 
@@ -45,6 +52,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.fetch(:ticket, {})
+    params.require(:ticket).permit(:train_id, :departure_station_id, :arrival_station_id)
   end
 end

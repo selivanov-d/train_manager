@@ -1,4 +1,28 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <strong>Пассажир:</strong>
+  <%= link_to @ticket.user.full_name, user_path(@ticket.user) %>
+</p>
 
-<%= link_to 'Редактировать', edit_ticket_path(@ticket) %> |
-<%= link_to 'К списку билетов', tickets_path %>
+<p>
+  <strong>Номер поезда:</strong>
+  <%= link_to @ticket.train.number, train_path(@ticket.train) %>
+</p>
+
+<p>
+  <strong>Станция отправления:</strong>
+  <%= link_to @ticket.departure_station.name, railway_station_path(@ticket.departure_station) %>
+  <br>
+  <strong>Дата и время отправления:</strong>
+  <%= @ticket.train.route.station_in_route(@ticket.departure_station.id).departure_datetime.strftime('%d.%m.%Y %H:%M') %>
+</p>
+
+<p>
+  <strong>Станция прибытия:</strong>
+  <%= link_to @ticket.arrival_station.name, railway_station_path(@ticket.arrival_station) %>
+  <br>
+  <strong>Дата и время прибытия:</strong>
+  <%= @ticket.train.route.station_in_route(@ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
+</p>
+
+
+<%= link_to 'Вернуться к пользователю', user_path(@ticket.user) %>

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Тип:</strong>
   <%= @carriage.type_name %>
@@ -24,4 +22,4 @@
 <%= render "carriages/#{class_snake_case}_fields" %>
 
 <%= link_to 'Изменить', edit_carriage_path(@carriage) %> |
-<%= link_to 'К списку вагонов', carriages_path %>
+<%= link_to 'К списку вагонов', train_carriages_path(@carriage.train) %>

@@ -21,6 +21,7 @@ class RoutesController < ApplicationController
     if @route.save
       redirect_to @route, notice: 'Маршрут создан!'
     else
+      flash.alert = get_errors_as_array_of_strings_for(@route)
       render :new
     end
   end
@@ -29,6 +30,7 @@ class RoutesController < ApplicationController
     if @route.update(route_params)
       redirect_to @route, notice: 'Маршрут обновлён'
     else
+      flash.alert = get_errors_as_array_of_strings_for(@route)
       render :edit
     end
   end

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Номер:</strong>
   <%= @train.number %>
@@ -25,6 +23,10 @@
       нет
     </p>
 <% end %>
+
+<p>
+  <%= link_to 'Добавить вагон', new_train_carriage_path(@train) %>
+</p>
 
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'К списку поездов', trains_path %>

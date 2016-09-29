@@ -1,10 +1,10 @@
 class Train < ActiveRecord::Base
   belongs_to :route
   belongs_to :current_station, class_name: 'RailwayStation'
-  has_many :tickets
-  has_many :carriages
+  has_many :tickets, dependent: :destroy
+  has_many :carriages, dependent: :nullify
 
-  validates :number, presence: true
+  validates :number, presence: { message: 'У поезда должен быть номер!' }
 
   def count_seats(carriage_type, seats_type)
     raise ArgumentError unless Carriage::TYPES.include? carriage_type

@@ -1,4 +1,21 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @user.full_name %></h1>
+
+<% if @user.tickets.present? %>
+    <h3>Билеты</h3>
+
+    <table>
+      <thead>
+      <th>Номер поезда</th>
+      <th>Станция и время отправления</th>
+      <th>Станция и время прибытия</th>
+      </thead>
+      <tbody>
+        <%= render partial: 'tickets/ticket_as_table_row', collection: @user.tickets, as: :ticket %>
+      </tbody>
+    </table>
+<% else %>
+    <h3>У пользователя пока нет билетов</h3>
+<% end %>
 
 <%= link_to 'Редактировать', edit_user_path(@user) %> |
 <%= link_to 'К списку пользователей', users_path %>

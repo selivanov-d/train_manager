@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924080738) do
+ActiveRecord::Schema.define(version: 20160927175338) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "train_id"
@@ -33,10 +33,13 @@ ActiveRecord::Schema.define(version: 20160924080738) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer "route_id",                       null: false
-    t.integer "railway_station_id",             null: false
-    t.integer "order_value",        default: 1
-    t.integer "position",           default: 1
+    t.integer  "route_id",                       null: false
+    t.integer  "railway_station_id",             null: false
+    t.integer  "order_value",        default: 1
+    t.integer  "position",           default: 1
+    t.datetime "arrive_datetime"
+    t.datetime "arrival_datetime"
+    t.datetime "departure_datetime"
   end
 
   add_index "railway_stations_routes", ["route_id", "railway_station_id"], name: "index_route_station", unique: true
@@ -48,12 +51,12 @@ ActiveRecord::Schema.define(version: 20160924080738) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer  "train_id",          null: false
-    t.integer  "user_id",           null: false
-    t.integer  "start_station_id",  null: false
-    t.integer  "finish_station_id", null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "train_id",             null: false
+    t.integer  "user_id",              null: false
+    t.integer  "departure_station_id", null: false
+    t.integer  "arrival_station_id",   null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "trains", force: :cascade do |t|
@@ -66,8 +69,12 @@ ActiveRecord::Schema.define(version: 20160924080738) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "first_name"
+    t.string   "family_name"
   end
+
+  add_index "users", ["first_name", "family_name"], name: "index_users_on_first_name_and_family_name", unique: true
 
 end

@@ -1,8 +1,4 @@
 <%= form_for(@railway_station) do |f| %>
-    <% if @railway_station.errors.any? %>
-        <%= render 'common/errors', resource: @railway_station %>
-    <% end %>
-
     <div class="field">
       <%= f.label :name, 'Название' %><br>
       <%= f.text_field :name %>

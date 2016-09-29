@@ -19,23 +19,25 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to @user, notice: 'Пользователь успешно создан!'
     else
+      flash.alert = get_errors_as_array_of_strings_for(@user)
       render :new
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, notice: 'Пользователь успешно обновлён!'
     else
+      flash.alert = get_errors_as_array_of_strings_for(@user)
       render :edit
     end
   end
 
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'Пользователь создан!'
+    redirect_to users_url, notice: 'Пользователь удалён!'
   end
 
   private
@@ -45,6 +47,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.fetch(:user, {})
+    params.require(:user).permit(:first_name, :family_name)
   end
 end

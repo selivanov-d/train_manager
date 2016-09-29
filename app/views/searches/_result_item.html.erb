@@ -1,0 +1,14 @@
+<tr>
+  <td><%= link_to train.id, train_path(train) %></td>
+  <td><%= link_to train.route.name, route_path(train.route) %></td>
+  <td><%= train.route.station_in_route(arrival_station_id).departure_datetime.strftime('%d.%m.%Y %H:%M') %></td>
+  <td><%= train.route.station_in_route(arrival_station_id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %></td>
+  <td>
+    <%= form_tag new_ticket_path, method: :get do %>
+      <%= hidden_field_tag :train_id, train.id %>
+      <%= hidden_field_tag :departure_station_id, departure_station_id %>
+      <%= hidden_field_tag :arrival_station_id, arrival_station_id %>
+      <%= button_tag 'Купить билет' %>
+    <% end %>
+  </td>
+</tr>
