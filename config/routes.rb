@@ -21,9 +21,11 @@ Rails.application.routes.draw do
   end
 
   resources :railway_stations do
-    patch :update_position, on: :member
-    patch :update_arrival_datetime, on: :member
-    patch :update_departure_datetime, on: :member
+    member do
+      patch :update_position
+      patch :update_arrival_datetime
+      patch :update_departure_datetime
+    end
   end
 
   resource :search do
