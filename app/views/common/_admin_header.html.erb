@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="header_wrapper">
+    <nav class="main-menu">
+      <ul class="main-menu_wrapper">
+        <li class="main-menu_item"><%= link_to_unless_current 'Поезда', admin_trains_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current 'Станции', admin_railway_stations_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current 'Маршруты', admin_routes_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current 'Билеты', admin_tickets_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current 'Пользователи', admin_users_path %></li>
+
+        <%= render 'common/login_block' %>
+      </ul>
+    </nav>
+  </div>
+</header>

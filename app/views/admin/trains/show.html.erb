@@ -1,0 +1,32 @@
+<p>
+  <strong>Номер:</strong>
+  <%= @train.number %>
+</p>
+
+<p>
+  <strong>Маршрут:</strong>
+  <% if @train.route.present? %>
+      <%= link_to @train.route.name, admin_route_path(@train.route) %>
+  <% else %>
+      Маршрут не назначен
+  <% end %>
+</p>
+
+<% if @train.carriages.present? %>
+    <%= render partial: 'admin/carriages/carriage_as_list_item',
+        collection: @train.carriages.ordered_by(@train.position_from_head),
+        as: :carriage
+    %>
+<% else %>
+    <p>
+      <strong>Вагонов:</strong>
+      нет
+    </p>
+<% end %>
+
+<p>
+  <%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train) %>
+</p>
+
+<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
+<%= link_to 'К списку поездов', admin_trains_path %>

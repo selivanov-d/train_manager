@@ -1,0 +1,6 @@
+<h1>Редактирование вагона</h1>
+
+<%= render partial: 'form', locals: { class_name: class_name } %>
+
+<%= link_to 'Смотреть', admin_carriage_path(@carriage) %> |
+<%= link_to 'К списку вагонов', admin_train_carriages_path(@carriage.train) %>

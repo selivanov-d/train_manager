@@ -1,0 +1,19 @@
+<% if @route.errors.any? %>
+    <%= render 'common/errors', resource: @route %>
+<% end %>
+
+<%= form_for [:admin, @route] do |f| %>
+    <div class="field">
+      <%= f.label :name, 'Название' %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :railway_station_ids, 'Станции' %><br>
+      <%= f.collection_select :railway_station_ids, RailwayStation.select(:id, :name).all, :id, :name, {}, { multiple: true } %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Сохранить' %>
+    </div>
+<% end %>

@@ -6,7 +6,7 @@
         <% end %>
 
         <% if flash.alert %>
-            <%= render partial: 'common/error_message', collection: flash.alert, as: :message %>
+            <%= render partial: 'common/error_message', locals: { message: flash.alert } %>
         <% end %>
       </div>
     </div>

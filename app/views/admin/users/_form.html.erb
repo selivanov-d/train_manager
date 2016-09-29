@@ -1,0 +1,26 @@
+<% if @user.errors.any? %>
+    <%= render 'common/errors', resource: @user %>
+<% end %>
+
+<%= form_for [:admin, @user] do |f| %>
+    <div class="field">
+      <%= f.label :first_name, 'Имя' %><br>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :family_name, 'Фамилия' %><br>
+      <%= f.text_field :family_name %>
+    </div>
+
+    <% if @user == current_user %>
+      <div class="field">
+        <%= f.label :email %><br/>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit 'Сохранить' %>
+    </div>
+<% end %>

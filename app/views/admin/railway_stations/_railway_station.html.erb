@@ -1,0 +1,6 @@
+<tr>
+    <td><%= railway_station.name %></td>
+    <td><%= link_to 'Смотреть', admin_railway_station_path(railway_station) %></td>
+    <td><%= link_to 'Редактировать', edit_admin_railway_station_path(railway_station) %></td>
+    <td><%= link_to 'Удалить', admin_railway_station_path(railway_station), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>

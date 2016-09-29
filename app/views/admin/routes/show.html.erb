@@ -1,0 +1,39 @@
+<p>
+  <strong>Название:</strong>
+  <%= @route.name %>
+</p>
+
+<p>
+  <strong>Поезда на этом маршруте:</strong>
+  <% if @route.trains.present? %>
+    <ul>
+      <%= render partial: 'admin/trains/train_as_list_item', collection: @route.trains, as: :train %>
+    </ul>
+<% else %>
+    Поездов на маршруте нет
+<% end %>
+</p>
+
+<p>
+  <strong>Станции этого маршрута:</strong>
+  <% if @route.railway_stations.present? %>
+    <table class="route-stations">
+      <thead>
+      <th>Позиция</th>
+      <th>Название</th>
+      <th>Время прибытия</th>
+      <th>Время отправления</th>
+      </thead>
+      <tbody>
+      <%= render partial: 'admin/railway_stations/railway_station_as_table_row',
+          collection: @route.railway_stations.ordered,
+          as: :railway_station %>
+      </tbody>
+    </table>
+<% else %>
+    Станций в маршруте нет
+<% end %>
+</p>
+
+<%= link_to 'Редактировать', edit_admin_route_path(@route) %> |
+<%= link_to 'К списку маршрутов', admin_routes_path %>

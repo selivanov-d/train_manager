@@ -1,0 +1,25 @@
+<p>
+  <strong>Тип:</strong>
+  <%= @carriage.type_name %>
+</p>
+
+<p>
+  <strong>Поезд:</strong>
+  <% if @carriage.train.present? %>
+      <%= link_to @carriage.train.number, admin_train_path(@carriage.train) %>
+  <% else %>
+      Не прицеплен к поезду
+  <% end %>
+</p>
+
+<% if @carriage.train.present? %>
+    <p>
+      <strong>Номер в составе:</strong>
+      <%= @carriage.position %>
+    </p>
+<% end %>
+
+<%= render "carriages/#{class_snake_case}_fields" %>
+
+<%= link_to 'Изменить', edit_admin_carriage_path(@carriage) %> |
+<%= link_to 'К списку вагонов', admin_train_carriages_path(@carriage.train) %>
