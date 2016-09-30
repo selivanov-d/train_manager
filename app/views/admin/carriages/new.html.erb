@@ -1,4 +1,9 @@
-<h1>Новый вагон</h1>
+<% @page_title = 'Новый вагон' %>
 
-<%= render 'form' %>
-<%= link_to 'К списку вагонов', admin_train_carriages_path(@train) %>
+<div class="admin-carriage-new">
+  <%= render 'form' %>
+
+  <div class="admin-carriage-new_actions">
+    <%= link_to 'К списку вагонов', admin_train_carriages_path(@train), class: 'admin-carriage-new_back-button' %>
+  </div>
+</div>

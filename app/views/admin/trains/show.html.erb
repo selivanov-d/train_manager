@@ -1,32 +1,39 @@
-<p>
-  <strong>Номер:</strong>
-  <%= @train.number %>
-</p>
+<% @page_title = "Поезд №#{@train.number}" %>
 
-<p>
-  <strong>Маршрут:</strong>
-  <% if @train.route.present? %>
-      <%= link_to @train.route.name, admin_route_path(@train.route) %>
+<div class="admin-train-show">
+  <p>
+    <strong>Маршрут:</strong>
+    <% if @train.route.present? %>
+        <%= link_to @train.route.name, admin_route_path(@train.route) %>
+    <% else %>
+        Маршрут не назначен
+    <% end %>
+  </p>
+
+  <% if @train.carriages.present? %>
+      <h3>Прицепленные вагоны</h3>
+      <table class="admin-train-show_carriages-table">
+        <thead>
+        <th>Номер вагона</th>
+        <th>Тип вагона</th>
+        </thead>
+        <tbody>
+        <%= render partial: 'admin/carriages/carriage_as_table_row',
+            collection: @train.carriages.ordered_by(@train.position_from_head),
+            as: :carriage
+        %>
+        </tbody>
+      </table>
   <% else %>
-      Маршрут не назначен
+      <h3>Прицепленных вагонов нет</h3>
   <% end %>
-</p>
 
-<% if @train.carriages.present? %>
-    <%= render partial: 'admin/carriages/carriage_as_list_item',
-        collection: @train.carriages.ordered_by(@train.position_from_head),
-        as: :carriage
-    %>
-<% else %>
-    <p>
-      <strong>Вагонов:</strong>
-      нет
-    </p>
-<% end %>
+  <p>
+    <%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train), class: 'admin-train-show_add-carriage-button' %>
+  </p>
 
-<p>
-  <%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train) %>
-</p>
-
-<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
-<%= link_to 'К списку поездов', admin_trains_path %>
+  <div class="admin-train-show_actions">
+    <%= link_to 'К списку поездов', admin_trains_path, class: 'admin-train-show_back-button' %>
+    <%= link_to 'Редактировать', edit_admin_train_path(@train), class: 'admin-train-show_edit-button' %>
+  </div>
+</div>

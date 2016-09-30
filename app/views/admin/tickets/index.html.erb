@@ -1,21 +1,21 @@
-<h1>Список всех билетов</h1>
+<% @page_title = 'Список всех билетов' %>
 
 <% if @tickets %>
-<table>
-  <thead>
-    <tr>
-      <th>Покупатель</th>
-      <th>Номер поезда</th>
-      <th>Станция отправления</th>
-      <th>Станция прибытия</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+    <table>
+      <thead>
+      <tr>
+        <th>Покупатель</th>
+        <th>Номер поезда</th>
+        <th>Станция отправления</th>
+        <th>Станция прибытия</th>
+        <th colspan="2"></th>
+      </tr>
+      </thead>
 
-  <tbody>
-   <%= render partial: 'admin/tickets/ticket_as_table_row_full', collection: @tickets, as: :ticket %>
-  </tbody>
-</table>
+      <tbody>
+      <%= render partial: 'admin/tickets/ticket_as_table_row_full', collection: @tickets, as: :ticket %>
+      </tbody>
+    </table>
 <% else %>
     <h3>Пока что не куплено ни одного билета</h3>
 <% end %>

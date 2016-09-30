@@ -2,23 +2,34 @@
 <html>
 <head>
   <title>TrainManager</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if current_user && current_user.admin? %>
+<% if current_user && current_user.admin? %>
     <%= render 'common/admin_header' %>
-  <% else %>
+<% else %>
     <%= render 'common/user_header' %>
-  <% end %>
+<% end %>
 
-  <%= render 'common/notice_panel' %>
+<%= render 'common/notice_panel' %>
 
-  <div class="content">
-    <%= yield %>
+<div class="container">
+  <div class="content-wrapper">
+    <div class="main-page-content">
+      <h1><%= @page_title %></h1>
+      <%= yield %>
+    </div>
+
+    <div class="sidebar">
+      <% if content_for? :sidebar %>
+        <%= content_for :sidebar %>
+      <% end %>
+    </div>
   </div>
+</div>
 
-  <%= render 'common/footer' %>
+<%= render 'common/footer' %>
 </body>
 </html>

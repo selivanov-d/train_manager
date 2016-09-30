@@ -1,9 +1,9 @@
-<div id="error_explanation">
-  <h2>Следующие ошибки помешали сохранению:</h2>
+<div class="errors">
+  <h4 class="errors_header">Следующие ошибки помешали сохранению:</h4>
 
-  <ul>
+  <ul class="errors_list errors-list">
     <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="errors-list_item"><%= message %></li>
     <% end %>
   </ul>
 </div>

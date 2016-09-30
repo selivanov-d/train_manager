@@ -1,24 +1,30 @@
-<h1>Поиск поездов по маршруту "<%= station_name_by_id(@search.departure_station_id) %>–<%= station_name_by_id(@search.arrival_station_id) %>"</h1>
+<% @page_title = "Поиск поездов по маршруту \"#{station_name_by_id(@search.departure_station_id)} – #{station_name_by_id(@search.arrival_station_id)}\"" %>
 
 <% if @search.errors.any? %>
-    <%= render 'common/errors', resource: @search %>
+    <% content_for :sidebar do %>
+        <%= render 'common/errors', resource: @search %>
+    <% end %>
 <% end %>
 
 <%= render 'form' %>
 
 <% if @search.result.present? %>
-    <table>
+    <table class="search-result-table">
       <thead>
       <th>Номер поезда</th>
       <th>Маршрут</th>
-      <th>Время отправления<br/><span class="station-name-comment">со станции "<%= station_name_by_id(@search.departure_station_id) %>"</span></th>
-      <th>Время прибытия<br/><span class="station-name-comment">на станции "<%= station_name_by_id(@search.arrival_station_id) %>"</span></th>
+      <th>Время
+        отправления<br/><span class="station-name-comment">со станции "<%= station_name_by_id(@search.departure_station_id) %>
+        "</span></th>
+      <th>Время
+        прибытия<br/><span class="station-name-comment">на станции "<%= station_name_by_id(@search.arrival_station_id) %>
+        "</span></th>
       <th></th>
       </thead>
       <tbody>
       <%= render partial: 'result_item', collection: @search.result, as: :train,
           locals: {
-            departure_station_id: @search.departure_station_id,
+              departure_station_id: @search.departure_station_id,
               arrival_station_id: @search.arrival_station_id
           } %>
       </tbody>

@@ -1,5 +1,9 @@
-<h1>Создать маршрут</h1>
+<% @page_title = 'Создать маршрут' %>
 
-<%= render 'form' %>
+<div class="admin-route-new">
+  <%= render 'form' %>
 
-<%= link_to 'К списку маршрутов', admin_routes_path %>
+  <div class="admin-route-new_actions">
+    <%= link_to 'К списку маршрутов', admin_routes_path, class: 'admin-route-new_back-button' %>
+  </div>
+</div>

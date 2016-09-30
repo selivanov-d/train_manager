@@ -1,6 +1,10 @@
-<h1>Редактирование поезда</h1>
+<% @page_title = 'Редактирование поезда' %>
 
-<%= render 'form' %>
+<div class="admin-train-edit">
+  <%= render 'form' %>
 
-<%= link_to 'Смотреть', admin_train_path(@train) %> |
-<%= link_to 'К списку поездов', admin_trains_path %>
+  <div class="admin-train-edit_actions">
+    <%= link_to 'К списку поездов', admin_trains_path, class: 'admin-train-edit_back-button' %>
+    <%= link_to 'Смотреть', admin_train_path(@train), class: 'admin-train-edit_show-button' %>
+  </div>
+</div>

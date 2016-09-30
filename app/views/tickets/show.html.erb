@@ -1,3 +1,5 @@
+<% @page_title = "Билет \"#{@ticket.id}\"" %>
+
 <p>
   <strong>Пассажир:</strong>
   <%= link_to @ticket.user.full_name, admin_user_path(@ticket.user) %>

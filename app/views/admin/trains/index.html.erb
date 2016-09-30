@@ -1,18 +1,20 @@
-<h1>Список поездов</h1>
+<% @page_title = 'Список поездов' %>
 
-<table>
-  <thead>
+<div class="admin-train-index">
+  <table class="admin-train-index_table">
+    <thead>
     <tr>
       <th>Номер</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <%= render @trains %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
-
-<%= link_to 'Создать новый поезд', new_admin_train_path %>
+  <div class="admin-train-index_actions">
+    <%= link_to 'Создать новый поезд', new_admin_train_path, class: 'admin-train-index_new-button' %>
+  </div>
+</div>

@@ -1,6 +1,10 @@
-<h1>Редактирование станции</h1>
+<% @page_title = "Редактирование станции \"#{@railway_station.name}\"" %>
 
-<%= render 'form' %>
+<div class="admin-station-edit">
+  <%= render 'form' %>
 
-<%= link_to 'Смотреть', admin_railway_station_path(@railway_station) %> |
-<%= link_to 'К списку станций', admin_railway_stations_path %>
+  <div class="admin-station-edit_actions">
+    <%= link_to 'К списку станций', admin_railway_stations_path, class: 'admin-station-edit_back-button' %>
+    <%= link_to 'Смотреть', admin_railway_station_path(@railway_station), class: 'admin-station-edit_show-button' %>
+  </div>
+</div>

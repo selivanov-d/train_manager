@@ -1,6 +1,10 @@
-<h1>Редактировать пользователя</h1>
+<% @page_title = 'Редактировать пользователя' %>
 
-<%= render 'form' %>
+<div class="user-edit">
+  <%= render 'form' %>
 
-<%= link_to 'Смотреть', admin_user_path(@user) %> |
-<%= link_to 'К списку пользователей', admin_users_path %>
+  <div class="user-edit_actions">
+    <%= link_to 'К списку пользователей', admin_users_path, class: 'user-edit_back-button' %>
+    <%= link_to 'Смотреть', admin_user_path(@user), class: 'user-edit_show-button' %>
+  </div>
+</div>

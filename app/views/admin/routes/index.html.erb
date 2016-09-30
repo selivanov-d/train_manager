@@ -1,25 +1,27 @@
-<h1>Список маршрутов</h1>
+<% @page_title = 'Список маршрутов' %>
 
-<table>
-  <thead>
+<div class="admin-routes-index">
+  <table class="admin-routes-index_table">
+    <thead>
     <tr>
       <th>Название</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @routes.each do |route| %>
-      <tr>
-        <td><%= route.name %></td>
-        <td><%= link_to 'Смотреть', admin_route_path(route) %></td>
-        <td><%= link_to 'Редактировать', edit_admin_route_path(route) %></td>
-        <td><%= link_to 'Удалить', admin_route_path(route), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-      </tr>
+        <tr>
+          <td><%= route.name %></td>
+          <td><%= link_to 'Смотреть', admin_route_path(route) %></td>
+          <td><%= link_to 'Редактировать', edit_admin_route_path(route) %></td>
+          <td><%= link_to 'Удалить', admin_route_path(route), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
-
-<%= link_to 'Создать маршрут', new_admin_route_path %>
+  <div class="admin-routes-index_actions">
+    <%= link_to 'Создать маршрут', new_admin_route_path, class: 'admin-routes-index_new-button' %>
+  </div>
+</div>

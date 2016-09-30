@@ -1,26 +1,28 @@
-<% if @user.errors.any? %>
-    <%= render 'common/errors', resource: @user %>
+<% content_for :sidebar do %>
+  <% if @user.errors.any? %>
+      <%= render 'common/errors', resource: @user %>
+  <% end %>
 <% end %>
 
-<%= form_for [:admin, @user] do |f| %>
-    <div class="field">
-      <%= f.label :first_name, 'Имя' %><br>
-      <%= f.text_field :first_name %>
+<%= form_for [:admin, @user], class: 'admin-user-form' do |f| %>
+    <div class="admin-user-form_input-wrapper">
+      <%= f.label :first_name, 'Имя' %>
+      <%= f.text_field :first_name, class: 'admin-user-form_input' %>
     </div>
 
-    <div class="field">
-      <%= f.label :family_name, 'Фамилия' %><br>
-      <%= f.text_field :family_name %>
+    <div class="admin-user-form_input-wrapper">
+      <%= f.label :family_name, 'Фамилия' %>
+      <%= f.text_field :family_name, class: 'admin-user-form_input' %>
     </div>
 
     <% if @user == current_user %>
-      <div class="field">
-        <%= f.label :email %><br/>
-        <%= f.email_field :email, autofocus: true %>
+      <div class="admin-user-form_input-wrapper">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: 'admin-user-form_input' %>
       </div>
     <% end %>
 
     <div class="actions">
-      <%= f.submit 'Сохранить' %>
+      <%= f.submit 'Сохранить', class: 'admin-user-form_save-button' %>
     </div>
 <% end %>

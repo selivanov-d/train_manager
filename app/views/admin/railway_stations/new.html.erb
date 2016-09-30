@@ -1,5 +1,9 @@
-<h1>Новая станция</h1>
+<% @page_title = 'Новая станция' %>
 
-<%= render 'form' %>
+<div class="railway-station-new">
+  <%= render 'form' %>
 
-<%= link_to 'К списку станций', admin_railway_stations_path %>
+  <div class="railway-station-new_actions">
+    <%= link_to 'К списку станций', admin_railway_stations_path, class: 'railway-station-new_back-button' %>
+  </div>
+</div>

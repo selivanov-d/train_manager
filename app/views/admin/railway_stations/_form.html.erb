@@ -1,9 +1,10 @@
-<%= form_for [:admin, @railway_station] do |f| %>
-    <div class="field">
-      <%= f.label :name, 'Название' %><br>
-      <%= f.text_field :name %>
+<%= form_for [:admin, @railway_station], class: 'admin-station-form' do |f| %>
+    <div class="admin-station-form_input-row">
+      <%= f.label :name, 'Название' %>
+      <%= f.text_field :name, class: 'admin-station-form_input' %>
     </div>
+
     <div class="actions">
-      <%= f.submit 'Сохранить' %>
+      <%= f.submit 'Сохранить', class: 'admin-station-form_save-button' %>
     </div>
 <% end %>
