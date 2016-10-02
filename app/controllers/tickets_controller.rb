@@ -25,7 +25,7 @@ class TicketsController < ApplicationController
   private
 
   def set_ticket_and_check_its_owner
-    @ticket = Ticket.find(params[:id])
+    @ticket = current_user.tickets.find(params[:id])
     redirect_to root_path, alert: 'Доступ запрещён!' unless @ticket.user == current_user
   end
 end
