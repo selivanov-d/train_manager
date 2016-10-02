@@ -1,6 +1,6 @@
 <p>
   <strong>Пассажир:</strong>
-  <%= link_to @ticket.user.full_name, admin_user_path(@ticket.user) %>
+  <%= link_to @ticket.user.full_name, user_path(@ticket.user) %>
 </p>
 
 <p>
@@ -25,4 +25,4 @@
 </p>
 
 
-<%= link_to 'Вернуться к пользователю', admin_user_path(@ticket.user) %>
+<%= link_to 'Вернуться к пользователю', user_path(@ticket.user) %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'admin/trains#index'
+  root 'searches#new'
 
   devise_for :users, :controllers => { :registrations => 'users/registrations' }
 
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :routes, only: [:index, :show]
   resources :tickets, only: [:index, :new, :show, :create, :destroy]
   resources :carriages, only: [:show]
+  resources :railway_stations, only: [:show]
 
   namespace :admin do
     resources :users
