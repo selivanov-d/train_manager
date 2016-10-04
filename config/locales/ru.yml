@@ -1,2 +1,177 @@
 ru:
-  hello: "Превед"
+  common:
+    year: Год
+    month: Месяц
+    day: День
+
+    return_to_search: К поиску
+    return_to_user: К пользователю
+    return_to_users: К списку пользователей
+    return_to_carriges: К списку вагонов
+    return_to_routes: К списку маршрутов
+    return_to_railway_stations: К списку станций
+    return_to_trains: К списку поездов
+
+    edit: Редактировать
+    show: Смотреть
+    view: Смотреть
+    destroy: Удалить
+    submit: Сохранить
+    are_you_sure: Вы уверены?
+
+    make_search: Найти
+
+    log_out: Выйти
+    log_in: Войти
+
+    footer_copyright: "&copy; %{year} Дмитрий Селиванов. Учебный проект в %{link_to_thinknetica}"
+
+    nav:
+      trains: Поезда
+      stations: Станции
+      routes: Маршруты
+      tickets: Билеты
+      users: Пользователи
+      search: Поиск
+      my_tickets: Мои билеты
+
+  tickets:
+    index:
+      title: Мои билеты
+      no_tickets: У вас пока что нет ни одного билета.
+
+    show:
+      title: Билет №%{ticket_id}
+
+  carriages:
+    show:
+      title: "Вагон №%{carriage_number}"
+      no_train: Не прицеплен к поезду
+
+  searches:
+    new:
+      title: Новый поиск
+
+    show_results:
+      no_results: По заданным критериям не найдено ни одного поезда.
+
+    result_item:
+      buy: Купить билет
+
+  routes:
+    index:
+      title: Список маршрутов
+      name: Название
+
+  users:
+    show:
+      title: Мой аккаунт
+      no_tickets: У пользователя пока нет билетов
+
+    edit:
+      title: Редактирование моего аккаунта
+
+  admin:
+    users:
+      index:
+        title: Список пользователей
+
+      show:
+        title: "Пользователь \"%{user_name}\""
+        tickets: Билеты
+        no_tickets: У пользователя пока нет билетов
+
+      new:
+        title: Новый пользователь
+
+      edit:
+        title: "Редактирование пользователя \"%{user_name}\""
+
+    trains:
+      new:
+        title: Новый поезд
+
+      index:
+        title: Список поездов
+        new: Создать новый поезд
+
+      edit:
+        title: "Редактирование поезда №%{train_number}"
+
+      show:
+        title: "Поезд №%{train_number}"
+        no_route: Маршрут не назначен
+        carriages: Прицепленные вагоны
+        no_carriages: Прицепленных вагонов нет
+        add_carriage: Добавить вагон
+
+      form:
+        no_route: Без маршрута
+
+
+    tickets:
+      new:
+        title: Информация о покупателе
+
+      show:
+        title: "Данные билеты №%{ticket_id}"
+
+      index:
+        title: Список всех билетов
+        no_tickets: Пока что не куплено ни одного билета
+
+    railway_stations:
+      index:
+        title: Список станций
+        create: Создать станцию
+
+      edit:
+        title: "Редактирование станции \"%{station_name}\""
+
+      new:
+        title: Новая станция
+
+      show:
+        title: "Станция \"%{station_name}\""
+        trains: Поезда на станции
+        no_trains: Поездов на станции нет!
+
+    routes:
+      index:
+        title: Список маршрутов
+        create: Создать маршрут
+        name: Название
+
+      edit:
+        title: "Изменить маршрут \"%{route_name}\""
+
+      new:
+        title: Создать маршрут
+
+      show:
+        title: "Маршрут \"%{route_name}\""
+        no_stations: Станций в маршруте нет
+        no_trains: Поездов на маршруте нет
+        trains: Поезда на этом маршруте
+        stations: Станции этого маршрута
+        position: Позиция
+
+    carriages:
+      new_submit: Создать вагон
+
+      new:
+        title: Новый вагон
+
+      show:
+        title: "Вагон №%{carriage_id}"
+        type_name: Тип
+        train_number: Номер поезда
+        not_attached: Не прицеплен к поезду
+        position: Номер в составе
+
+      index:
+        title: "Список вагонов поезда №%{train_number}"
+        new: Добавить вагон
+
+      edit:
+        title: Редактирование вагона

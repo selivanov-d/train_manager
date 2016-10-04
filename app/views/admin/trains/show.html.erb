@@ -1,21 +1,21 @@
-<% @page_title = "Поезд №#{@train.number}" %>
+<% @page_title = t '.title', train_number: @train.number %>
 
 <div class="admin-train-show">
   <p>
-    <strong>Маршрут:</strong>
+    <strong><%= Train.human_attribute_name(:route_id) %>:</strong>
     <% if @train.route.present? %>
         <%= link_to @train.route.name, admin_route_path(@train.route) %>
     <% else %>
-        Маршрут не назначен
+        <%= t '.no_route' %>
     <% end %>
   </p>
 
   <% if @train.carriages.present? %>
-      <h3>Прицепленные вагоны</h3>
+      <h3><%= t '.carriages' %></h3>
       <table class="admin-train-show_carriages-table">
         <thead>
-        <th>Номер вагона</th>
-        <th>Тип вагона</th>
+        <th><%= Carriage.human_attribute_name(:position) %></th>
+        <th><%= Carriage.human_attribute_name(:type) %></th>
         </thead>
         <tbody>
         <%= render partial: 'admin/carriages/carriage_as_table_row',
@@ -25,15 +25,15 @@
         </tbody>
       </table>
   <% else %>
-      <h3>Прицепленных вагонов нет</h3>
+      <h3><%= t '.no_carriages' %></h3>
   <% end %>
 
   <p>
-    <%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train), class: 'admin-train-show_add-carriage-button' %>
+    <%= link_to t('.add_carriage'), new_admin_train_carriage_path(@train), class: 'admin-train-show_add-carriage-button' %>
   </p>
 
   <div class="admin-train-show_actions">
-    <%= link_to 'К списку поездов', admin_trains_path, class: 'admin-train-show_back-button' %>
-    <%= link_to 'Редактировать', edit_admin_train_path(@train), class: 'admin-train-show_edit-button' %>
+    <%= link_to t('common.return_to_trains'), admin_trains_path, class: 'admin-train-show_back-button' %>
+    <%= link_to t('common.edit'), edit_admin_train_path(@train), class: 'admin-train-show_edit-button' %>
   </div>
 </div>

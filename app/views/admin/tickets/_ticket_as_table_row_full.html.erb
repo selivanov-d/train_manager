@@ -11,6 +11,6 @@
     <br/>
     <%= ticket.train.route.station_in_route(ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
   </td>
-  <td><%= link_to 'Смотреть', admin_ticket_path(ticket) %></td>
-  <td><%= link_to 'Удалить', admin_ticket_path(ticket), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td><%= link_to t('common.show'), admin_ticket_path(ticket) %></td>
+  <td><%= link_to t('common.destroy'), admin_ticket_path(ticket), method: :delete, data: { confirm: t('common.are_you_sure') } %></td>
 </tr>

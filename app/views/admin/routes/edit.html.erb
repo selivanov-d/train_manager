@@ -1,9 +1,9 @@
-<% @page_title = "Изменить маршрут \"#{@route.name}\"" %>
+<% @page_title = t '.title', route_name: @route.name %>
 
 <div class="admin-route-edit">
   <%= render 'form' %>
 
   <div class="admin-route-edit_actions">
-    <%= link_to 'К списку маршрутов', admin_routes_path, class: 'admin-route-edit_back-button' %>
+    <%= link_to t('common.return_to_routes'), admin_routes_path, class: 'admin-route-edit_back-button' %>
   </div>
 </div>

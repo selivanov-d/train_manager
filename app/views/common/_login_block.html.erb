@@ -1,14 +1,13 @@
 <% if current_user %>
     <li class="main-menu_item -logout">
-      <%= link_to 'Выйти', destroy_user_session_path, method: :delete %><br/>
+      <%= link_to t('common.log_out'), destroy_user_session_path, method: :delete %><br/>
 
       <% if current_user.admin? %>
           <span class="user-name">Привет, <%= link_to current_user.full_name, admin_user_path(current_user) %></span>
       <% else %>
           <span class="user-name">Привет, <%= link_to current_user.full_name, user_path(current_user) %></span>
       <% end %>
-
     </li>
 <% else %>
-    <li class="main-menu_item -login"><%= link_to 'Войти', user_session_path %></li>
+    <li class="main-menu_item -login"><%= link_to t('common.log_in'), user_session_path %></li>
 <% end %>

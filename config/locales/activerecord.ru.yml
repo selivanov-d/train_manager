@@ -1,19 +1,58 @@
 ru:
   activerecord:
     models:
-      railway_station: 'Станция'
-      train: 'Поезд'
+      railway_station: Станция
+      train: Поезд
+
     attributes:
       railway_station:
-        title: 'Название'
+        name: Название
+
       train:
-        number: 'Номер'
-        current_station: 'Текущая станция'
+        number: Номер
+        current_station: Текущая станция
+        position_from_head: Нумерация с головы поезда
+        route_id: Маршрут
+
+      route:
+        name: Название
+        position: Позиция
+        railway_station_ids: Станции
+
+      carriage:
+        train_id: Номер поезда
+        type: Тип вагона
+        position: Позиция
+        upper_seats: Верхние места
+        bottom_seats: Нижние места
+        side_bottom_seats: Боковые нижних места
+        side_upper_seats: Боковые верхних места
+        seating_seats: Сидячие места
+
+      user:
+        first_name: Имя
+        family_name: Фамилия
+        full_name: Имя
+        email: Email
+
+      railway_stations_route:
+        departure_date_and_time: Дата и время отправления
+        arrival_date_and_time: Дата и время прибытия
+        station_name_and_departure_time: Станция и время отправления
+        station_name_and_arrive_time: Станция и время прибытия
+
+      ticket:
+        user_id: Покупатель
+        train_id: Поезд
+        departure_station_id: Станция отправления
+        arrival_station_id: Станция прибытия
+
     errors:
       messages:
-        blank: 'не может быть пустым'
+        blank: не может быть пустым
+
       models:
         railway_station:
           attributes:
             title:
-              blank: 'должно быть указано'
+              blank: должно быть указано

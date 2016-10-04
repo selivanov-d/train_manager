@@ -1,9 +1,9 @@
-<% @page_title = 'Список маршрутов' %>
+<% @page_title = t '.title' %>
 
 <table>
   <thead>
     <tr>
-      <th>Название</th>
+      <th><%= t '.name' %></th>
       <th></th>
     </tr>
   </thead>
@@ -12,7 +12,7 @@
     <% @routes.each do |route| %>
       <tr>
         <td><%= route.name %></td>
-        <td><%= link_to 'Смотреть', route_path(route) %></td>
+        <td><%= link_to t('common.show'), route_path(route) %></td>
       </tr>
     <% end %>
   </tbody>

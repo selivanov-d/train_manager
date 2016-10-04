@@ -1,5 +1,5 @@
-<% @page_title = 'Новый поезд' %>
+<% @page_title = t ('.title') %>
 
 <%= render 'form' %>
 
-<%= link_to 'К списку поездов', admin_trains_path %>
+<%= link_to t('common.return_to_trains'), admin_trains_path %>

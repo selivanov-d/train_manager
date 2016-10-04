@@ -1,13 +1,13 @@
-<% @page_title = 'Мой аккаунт' %>
+<% @page_title = t '.title' %>
 
 <div class="user-show">
   <p>
-    <strong>Имя:</strong>
+    <strong><%= t 'common.user_name' %>:</strong>
     <%= @user.full_name %>
   </p>
 
   <p>
-    <strong>Email:</strong>
+    <strong><%= t 'common.user_email' %>:</strong>
     <%= @user.email %>
   </p>
 
@@ -16,20 +16,20 @@
 
       <table class="user-show_tickets-table">
         <thead>
-        <th>Номер поезда</th>
-        <th>Станция и время отправления</th>
-        <th>Станция и время прибытия</th>
+        <th><%= t 'common.train_number' %></th>
+        <th><%= t 'common.station_name_and_departure_time' %></th>
+        <th><%= t 'common.station_name_and_arrive_time' %></th>
         </thead>
         <tbody>
         <%= render partial: 'admin/tickets/ticket_as_table_row', collection: @user.tickets, as: :ticket %>
         </tbody>
       </table>
   <% else %>
-      <h3>У пользователя пока нет билетов</h3>
+      <h3><%= t '.no_tickets' %></h3>
   <% end %>
 
   <div class="user-show_actions">
-    <%= link_to 'К поиску', search_path, class: 'user-show_back-button' %>
-    <%= link_to 'Редактировать', edit_admin_user_path(@user), class: 'user-show_edit-button' %>
+    <%= link_to t('common.return_to_search'), search_path, class: 'user-show_back-button' %>
+    <%= link_to t('common.edit'), edit_admin_user_path(@user), class: 'user-show_edit-button' %>
   </div>
 </div>

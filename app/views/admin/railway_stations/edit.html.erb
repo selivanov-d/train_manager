@@ -1,10 +1,10 @@
-<% @page_title = "Редактирование станции \"#{@railway_station.name}\"" %>
+<% @page_title = t '.title', station_name: @railway_station.name %>
 
 <div class="admin-station-edit">
   <%= render 'form' %>
 
   <div class="admin-station-edit_actions">
-    <%= link_to 'К списку станций', admin_railway_stations_path, class: 'admin-station-edit_back-button' %>
-    <%= link_to 'Смотреть', admin_railway_station_path(@railway_station), class: 'admin-station-edit_show-button' %>
+    <%= link_to t('common.return_to_railway_stations'), admin_railway_stations_path, class: 'admin-station-edit_back-button' %>
+    <%= link_to t('common.show'), admin_railway_station_path(@railway_station), class: 'admin-station-edit_show-button' %>
   </div>
 </div>

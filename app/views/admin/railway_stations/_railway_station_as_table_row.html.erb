@@ -4,7 +4,7 @@
         <%= number_field_tag :position, railway_station.station_route(@route).position, class: 'position-input' %>
         <%= hidden_field_tag :route_id, @route.id %>
         <br/>
-        <%= submit_tag 'Изменить' %>
+        <%= submit_tag t 'common.submit' %>
     <% end %>
   </td>
 
@@ -17,14 +17,14 @@
         <%= datetime_select :arrival_datetime, nil,
             default: railway_station.station_route(@route).arrival_datetime,
             prompt: -> (date) {
-              return { year: 'Год', month: 'Месяц', day: 'День' } unless date
+              return { year: t('common.year'), month: t('common.month'), day: t('common.day') } unless date
               false
             }.call(railway_station.station_route(@route).arrival_datetime),
             start_year: Time.zone.now.year
         %>
         <%= hidden_field_tag :station_id, railway_station.id %>
         <%= hidden_field_tag :route_id, @route.id %>
-        <%= submit_tag 'Изменить' %>
+        <%= submit_tag t 'common.submit' %>
     <% end %>
   </td>
 
@@ -33,14 +33,14 @@
         <%= datetime_select :departure_datetime, nil,
             default: railway_station.station_route(@route).departure_datetime,
             prompt: -> (date) {
-              return { year: 'Год', month: 'Месяц', day: 'День' } unless date
+              return { year: t('common.year'), month: t('common.month'), day: t('common.day') } unless date
               false
             }.call(railway_station.station_route(@route).departure_datetime),
             start_year: Time.zone.now.year
         %>
         <%= hidden_field_tag :station_id, railway_station.id %>
         <%= hidden_field_tag :route_id, @route.id %>
-        <%= submit_tag 'Изменить' %>
+        <%= submit_tag t 'common.submit' %>
     <% end %>
   </td>
 </tr>

@@ -1,19 +1,19 @@
 <p>
-  <strong>Верхних мест:</strong>
+  <strong><%= Carriage.human_attribute_name(:upper_seats) %>:</strong>
   <%= @carriage.upper_seats %>
 </p>
 
 <p>
-  <strong>Нижних мест:</strong>
+  <strong><%= Carriage.human_attribute_name(:bottom_seats) %>:</strong>
   <%= @carriage.bottom_seats %>
 </p>
 
 <p>
-  <strong>Боковых верхних мест:</strong>
+  <strong><%= Carriage.human_attribute_name(:side_upper_seats) %>:</strong>
   <%= @carriage.side_upper_seats %>
 </p>
 
 <p>
-  <strong>Боковых нижних мест:</strong>
+  <strong><%= Carriage.human_attribute_name(:side_bottom_seats) %>:</strong>
   <%= @carriage.side_bottom_seats %>
 </p>

@@ -4,23 +4,23 @@
 
 <%= form_for [:admin, @train], class: 'admin-train-form' do |f| %>
     <div class="admin-train-form_input-row">
-      <%= f.label :number, 'Номер' %>
+      <%= f.label :number %>
       <%= f.text_field :number, class: 'admin-train-form_input' %>
     </div>
 
     <div class="admin-train-form_input-row">
       <%= f.label :position_from_head, class: 'admin-train-form_checkbox-wrapper' do %>
           <%= f.check_box :position_from_head %>
-          Нумерация с головы поезда
+          <%= Train.human_attribute_name(:position_from_head) %>
       <% end %>
     </div>
 
     <div class="admin-train-form_input-row">
-      <%= f.label :route, 'Маршрут' %>
-      <%= f.collection_select :route_id, Route.select(:id, :name).all, :id, :name, { include_blank: 'Без маршрута' }, class: 'admin-train-form_input' %>
+      <%= f.label :route_id %>
+      <%= f.collection_select :route_id, Route.select(:id, :name).all, :id, :name, { include_blank: t('.no_route') }, class: 'admin-train-form_input' %>
     </div>
 
     <div class="actions">
-      <%= f.submit 'Сохранить', class: 'admin-train-form_save-button' %>
+      <%= f.submit t 'common.submit', class: 'admin-train-form_save-button' %>
     </div>
 <% end %>

@@ -1,30 +1,30 @@
-<% @page_title = "Билет \"#{@ticket.id}\"" %>
+<% @page_title = t '.title', ticket_id: @ticket.id %>
 
 <p>
-  <strong>Пассажир:</strong>
+  <strong><%= t 'common.passenger' %>:</strong>
   <%= link_to @ticket.user.full_name, admin_user_path(@ticket.user) %>
 </p>
 
 <p>
-  <strong>Номер поезда:</strong>
+  <strong><%= t 'common.train_number' %>:</strong>
   <%= link_to @ticket.train.number, train_path(@ticket.train) %>
 </p>
 
 <p>
-  <strong>Станция отправления:</strong>
+  <strong><%= t 'common.departure_station' %>:</strong>
   <%= @ticket.departure_station.name %>
   <br>
-  <strong>Дата и время отправления:</strong>
+  <strong><%= t 'common.departure_date_and_time' %>:</strong>
   <%= @ticket.train.route.station_in_route(@ticket.departure_station.id).departure_datetime.strftime('%d.%m.%Y %H:%M') %>
 </p>
 
 <p>
-  <strong>Станция прибытия:</strong>
+  <strong><%= t 'common.arrival_station' %>:</strong>
   <%= @ticket.arrival_station.name %>
   <br>
-  <strong>Дата и время прибытия:</strong>
+  <strong><%= t 'common.arrival_date_and_time' %>:</strong>
   <%= @ticket.train.route.station_in_route(@ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
 </p>
 
 
-<%= link_to 'Вернуться к пользователю', admin_user_path(@ticket.user) %>
+<%= link_to t('common.back_to_user'), admin_user_path(@ticket.user) %>

@@ -1,10 +1,10 @@
-<% @page_title = 'Список поездов' %>
+<% @page_title = t '.title' %>
 
 <div class="admin-train-index">
   <table class="admin-train-index_table">
     <thead>
     <tr>
-      <th>Номер</th>
+      <th><%= Train.human_attribute_name(:number) %></th>
       <th colspan="3"></th>
     </tr>
     </thead>
@@ -15,6 +15,6 @@
   </table>
 
   <div class="admin-train-index_actions">
-    <%= link_to 'Создать новый поезд', new_admin_train_path, class: 'admin-train-index_new-button' %>
+    <%= link_to t('.new'), new_admin_train_path, class: 'admin-train-index_new-button' %>
   </div>
 </div>

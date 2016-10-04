@@ -1,13 +1,13 @@
-<% @page_title = 'Мои билеты' %>
+<% @page_title = t '.title' %>
 
 <div class="my-tickets">
   <% if @tickets.any? %>
       <table class="my-tickets_table">
         <thead>
         <tr>
-          <th>Номер поезда</th>
-          <th>Станция и время отправления</th>
-          <th>Станция и время прибытия</th>
+          <th><%= t 'common.train_number' %></th>
+          <th><%= t 'common.station_name_and_departure_time' %></th>
+          <th><%= t 'common.station_name_and_arrive_time' %></th>
           <th colspan="3"></th>
         </tr>
         </thead>
@@ -26,17 +26,17 @@
                 <br/>
                 <%= ticket.train.route.station_in_route(ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
               </td>
-              <td><%= link_to 'Смотреть', ticket %></td>
-              <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+              <td><%= link_to t('common.show'), ticket %></td>
+              <td><%= link_to t('common.destroy'), ticket, method: :delete, data: { confirm: t('common.are_you_sure') } %></td>
             </tr>
         <% end %>
         </tbody>
       </table>
   <% else %>
-      <h3>У вас пока что нет ни одного билета.</h3>
+      <h3><%= t '.no_tickets' %></h3>
   <% end %>
 
   <div class="my-tickets_actions">
-    <%= link_to 'К поиску', search_path, class: 'my-tickets_back-button' %>
+    <%= link_to t('common.return_to_search'), search_path, class: 'my-tickets_back-button' %>
   </div>
 </div>

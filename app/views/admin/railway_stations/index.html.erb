@@ -1,4 +1,4 @@
-<% @page_title = 'Список станций' %>
+<% @page_title = t '.title' %>
 
 <div class="admin-stations">
   <table class="admin-stations_table">
@@ -14,6 +14,6 @@
   </table>
 
   <div class="admin-stations_actions">
-    <%= link_to 'Создать станцию', new_admin_railway_station_path, class: 'admin-stations_new-button' %>
+    <%= link_to t('.create'), new_admin_railway_station_path, class: 'admin-stations_new-button' %>
   </div>
 </div>

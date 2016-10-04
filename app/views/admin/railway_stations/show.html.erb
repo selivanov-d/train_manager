@@ -1,19 +1,19 @@
-<% @page_title = "Станция \"#{@railway_station.name}\"" %>
+<% @page_title = t '.title', station_name: @railway_station.name %>
 
 <div class="admin-station-show">
   <p>
-    <strong>Поезда на станции:</strong>
+    <strong><%= t '.trains' %>:</strong>
     <% if @railway_station.trains.present? %>
       <ul>
         <%= render partial: 'admin/trains/train_as_list_item', collection: @railway_station.trains, as: :train %>
       </ul>
     <% else %>
-        Поездов на станции нет!
+      <%= t '.no_trains' %>
     <% end %>
   </p>
 
   <div class="admin-station-show_actions">
-    <%= link_to 'К списку станций', admin_railway_stations_path, class: 'admin-station-show_back-button' %>
-    <%= link_to 'Редактировать', edit_admin_railway_station_path(@railway_station), class: 'admin-station-show_edit-button' %>
+    <%= link_to t('common.return_to_railway_stations'), admin_railway_stations_path, class: 'admin-station-show_back-button' %>
+    <%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station), class: 'admin-station-show_edit-button' %>
   </div>
 </div>

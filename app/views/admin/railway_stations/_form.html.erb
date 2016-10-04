@@ -1,10 +1,10 @@
 <%= form_for [:admin, @railway_station], class: 'admin-station-form' do |f| %>
     <div class="admin-station-form_input-row">
-      <%= f.label :name, 'Название' %>
+      <%= f.label :name %>
       <%= f.text_field :name, class: 'admin-station-form_input' %>
     </div>
 
     <div class="actions">
-      <%= f.submit 'Сохранить', class: 'admin-station-form_save-button' %>
+      <%= f.submit t('common.submit'), class: 'admin-station-form_save-button' %>
     </div>
 <% end %>

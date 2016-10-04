@@ -2,11 +2,11 @@
   <div class="header_wrapper">
     <nav class="main-menu">
       <ul class="main-menu_wrapper">
-        <li class="main-menu_item"><%= link_to_unless_current 'Поезда', admin_trains_path %></li>
-        <li class="main-menu_item"><%= link_to_unless_current 'Станции', admin_railway_stations_path %></li>
-        <li class="main-menu_item"><%= link_to_unless_current 'Маршруты', admin_routes_path %></li>
-        <li class="main-menu_item"><%= link_to_unless_current 'Билеты', admin_tickets_path %></li>
-        <li class="main-menu_item"><%= link_to_unless_current 'Пользователи', admin_users_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current t('common.nav.trains'), admin_trains_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current t('common.nav.stations'), admin_railway_stations_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current t('common.nav.routes'), admin_routes_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current t('common.nav.tickets'), admin_tickets_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current t('common.nav.users'), admin_users_path %></li>
 
         <%= render 'common/login_block' %>
       </ul>

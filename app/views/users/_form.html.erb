@@ -4,16 +4,16 @@
 
 <%= form_for @user do |f| %>
     <div class="field">
-      <%= f.label :first_name, 'Имя' %><br>
+      <%= f.label :first_name %><br>
       <%= f.text_field :first_name %>
     </div>
 
     <div class="field">
-      <%= f.label :family_name, 'Фамилия' %><br>
+      <%= f.label :family_name %><br>
       <%= f.text_field :family_name %>
     </div>
 
     <div class="actions">
-      <%= f.submit 'Сохранить' %>
+      <%= f.submit t 'common.submit' %>
     </div>
 <% end %>

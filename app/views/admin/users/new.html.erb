@@ -1,5 +1,5 @@
-<% @page_title = 'Новый пользователь' %>
+<% @page_title = t '.title' %>
 
 <%= render 'form' %>
 
-<%= link_to 'К списку пользователей', admin_users_path %>
+<%= link_to t('common.return_to_users'), admin_users_path %>
