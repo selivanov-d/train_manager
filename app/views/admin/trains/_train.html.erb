@@ -1,6 +1,14 @@
 <tr>
   <td><%= train.number %></td>
-  <td><%= link_to t('common.show'), admin_train_path(train) %></td>
-  <td><%= link_to t('common.edit'), edit_admin_train_path(train) %></td>
-  <td><%= link_to t('common.destroy'), admin_train_path(train), method: :delete, data: { confirm: t('common.are_you_sure') } %></td>
+  <td>
+    <%= link_to admin_train_path(train) do
+      bs_icon 'eye-open', tooltip: t('common.show')
+    end %>
+    <%= link_to edit_admin_train_path(train) do
+      bs_icon :pencil, tooltip: t('common.edit')
+    end %>
+    <%= link_to admin_train_path(train), method: :delete, data: { confirm: t('common.are_you_sure') } do
+      bs_icon :remove, tooltip: t('common.destroy')
+    end %>
+  </td>
 </tr>

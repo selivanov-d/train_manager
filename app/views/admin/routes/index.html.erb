@@ -5,7 +5,7 @@
     <thead>
     <tr>
       <th><%= t '.name' %></th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
     </thead>
 
@@ -13,9 +13,17 @@
     <% @routes.each do |route| %>
         <tr>
           <td><%= route.name %></td>
-          <td><%= link_to t('common.show'), admin_route_path(route) %></td>
-          <td><%= link_to t('common.edit'), edit_admin_route_path(route) %></td>
-          <td><%= link_to t('common.destroy'), admin_route_path(route), method: :delete, data: { confirm: t('common.are_you_sure') } %></td>
+          <td>
+            <%= link_to admin_route_path(route) do
+              bs_icon 'eye-open', tooltip: t('common.show')
+            end %>
+            <%= link_to edit_admin_route_path(route) do
+              bs_icon :pencil, tooltip: t('common.edit')
+            end %>
+            <%= link_to admin_route_path(route), method: :delete, data: { confirm: t('common.are_you_sure') } do
+              bs_icon :remove, tooltip: t('common.destroy')
+            end %>
+          </td>
         </tr>
     <% end %>
     </tbody>
