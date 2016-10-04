@@ -24,7 +24,7 @@ class Admin::RailwayStationsController < Admin::BaseController
     @railway_station = RailwayStation.new(railway_station_params)
 
     if @railway_station.save
-      redirect_to admin_railway_station_path(@railway_station), notice: 'Станция создана!'
+      redirect_to admin_railway_station_path(@railway_station), notice: t('.success_notice')
     else
       render :new
     end
@@ -32,7 +32,7 @@ class Admin::RailwayStationsController < Admin::BaseController
 
   def update
     if @railway_station.update(railway_station_params)
-      redirect_to admin_railway_station_path(@railway_station), notice: 'Станция обновлена'
+      redirect_to admin_railway_station_path(@railway_station), notice: t('.success_notice')
     else
       render :edit
     end
@@ -40,14 +40,14 @@ class Admin::RailwayStationsController < Admin::BaseController
 
   def destroy
     @railway_station.destroy
-    redirect_to admin_railway_stations_url, notice: 'Станция удалена!'
+    redirect_to admin_railway_stations_url, notice: t('.success_notice')
   end
 
   def update_position
     if @station_route.update(position: params[:position])
-      redirect_to admin_route_path(@route), notice: 'Позиция обновлена!'
+      redirect_to admin_route_path(@route), notice: t('.success_notice')
     else
-      redirect_to admin_route_path(@route), alert: 'Не удалось обновить позицию!'
+      redirect_to admin_route_path(@route), alert: t('.fail_alert')
     end
   end
 
@@ -55,12 +55,12 @@ class Admin::RailwayStationsController < Admin::BaseController
     date = time_object_from_params_from_datetime_params(params[:arrival_datetime])
 
     if !date
-      redirect_to admin_route_path(@route), alert: 'Незаполена дата прибытия!'
+      redirect_to admin_route_path(@route), alert: t('.wrong_datetime_format')
     else
       if @station_route.update(arrival_datetime: date)
-        redirect_to admin_route_path(@route), notice: 'Время прибытия обновлено!'
+        redirect_to admin_route_path(@route), notice: t('.success_notice')
       else
-        redirect_to admin_route_path(@route), alert: 'Не удалось обновить дату прибытия!'
+        redirect_to admin_route_path(@route), alert: t('.fail_alert')
       end
     end
   end
@@ -69,15 +69,12 @@ class Admin::RailwayStationsController < Admin::BaseController
     date = time_object_from_params_from_datetime_params(params[:departure_datetime])
 
     if !date
-      redirect_to admin_route_path(@route), alert: 'Незаполена дата отправления!'
+      redirect_to admin_route_path(@route), alert: t('.wrong_datetime_format')
     else
       if @station_route.update(departure_datetime: date)
-        redirect_to admin_route_path(@route), notice: 'Время отправления обновлено!'
+        redirect_to admin_route_path(@route), notice: t('.success_notice')
       else
-        # REVIEW: как лучше передать в представление модель? Понятно, что если бы этот методы был в контроллере Route,
-        # откуда я вызываю этот метод, то там можно было бы это сделать через инстанс-переменную, но это другой контроллер
-        # и вызвать метод render я не могу.
-        redirect_to admin_route_path(@route), alert: 'Не удалось обновить дату отправления!'
+        redirect_to admin_route_path(@route), alert: t('.fail_alert')
       end
     end
   end

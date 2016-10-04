@@ -22,7 +22,7 @@ class Admin::CarriagesController < Admin::BaseController
     @carriage = @train.carriages.new(carriage_params)
 
     if @carriage.save
-      redirect_to admin_train_path(@train), notice: 'Вагон создан!'
+      redirect_to admin_train_path(@train), notice: t('.success_notice')
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Admin::CarriagesController < Admin::BaseController
 
   def update
     if @carriage.update(carriage_params)
-      redirect_to admin_train_path(@carriage.train), notice: 'Вагон обновлён!'
+      redirect_to admin_train_path(@carriage.train), notice: t('.success_notice')
     else
       render :edit, locals: { class_name: @carriage.class.to_s }
     end
@@ -38,7 +38,7 @@ class Admin::CarriagesController < Admin::BaseController
 
   def destroy
     @carriage.destroy
-    redirect_to admin_train_carriages_path(@carriage.train), notice: 'Вагон удалён!'
+    redirect_to admin_train_carriages_path(@carriage.train), notice: t('.success_notice')
   end
 
   private

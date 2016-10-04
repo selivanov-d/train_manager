@@ -1,4 +1,11 @@
 ru:
+  date:
+    month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
+    order:
+      - year
+      - month
+      - day
+
   common:
     year: Год
     month: Месяц
@@ -24,6 +31,8 @@ ru:
     log_out: Выйти
     log_in: Войти
 
+    errors_header: Следующие ошибки помешали сохранению
+
     footer_copyright: "&copy; %{year} Дмитрий Селиванов. Учебный проект в %{link_to_thinknetica}"
 
     nav:
@@ -42,6 +51,12 @@ ru:
 
     show:
       title: Билет №%{ticket_id}
+
+    create:
+      success_notice: Билет создан!
+
+    destroy:
+      success_notice: Билет удалён!
 
   carriages:
     show:
@@ -71,6 +86,9 @@ ru:
     edit:
       title: Редактирование моего аккаунта
 
+    update:
+      success_notice: Пользователь успешно обновлён!
+
   admin:
     users:
       index:
@@ -86,6 +104,15 @@ ru:
 
       edit:
         title: "Редактирование пользователя \"%{user_name}\""
+
+      create:
+        success_notice: Пользователь успешно создан!
+
+      update:
+        success_notice: Пользователь успешно обновлён!
+
+      destroy:
+        success_notice: Пользователь удалён!
 
     trains:
       new:
@@ -108,6 +135,14 @@ ru:
       form:
         no_route: Без маршрута
 
+      create:
+        success_notice: Поезд создан!
+
+      update:
+        success_notice: Поезд обновлён!
+
+      destroy:
+        success_notice: Поезд удалён!
 
     tickets:
       new:
@@ -119,6 +154,9 @@ ru:
       index:
         title: Список всех билетов
         no_tickets: Пока что не куплено ни одного билета
+
+      destroy:
+        success_notice: Билет удалён!
 
     railway_stations:
       index:
@@ -135,6 +173,29 @@ ru:
         title: "Станция \"%{station_name}\""
         trains: Поезда на станции
         no_trains: Поездов на станции нет!
+
+      create:
+        success_notice: Станция создана!
+
+      update:
+        success_notice: Станция обновлена
+
+      destroy:
+        success_notice: Станция удалена!
+
+      update_position:
+        success_notice: Позиция обновлена!
+        fail_alert: Не удалось обновить позицию! Проверьте, что она не совпадает с другой.
+
+      update_departure_datetime:
+        success_notice: Время отправления обновлено!
+        fail_alert: Не удалось обновить дату отправления! Проверьте, что она задана, находится в будущем и идёт после даты отправления.
+        wrong_datetime_format: Незаполена дата отправления!
+
+      update_arrival_datetime:
+        success_notice: Время прибытия обновлено!
+        fail_alert: Не удалось обновить дату прибытия! Проверьте, что она задана, находится в будущем и идёт до даты прибытия.
+        wrong_datetime_format: Незаполена дата прибытия!
 
     routes:
       index:
@@ -156,6 +217,15 @@ ru:
         stations: Станции этого маршрута
         position: Позиция
 
+      create:
+        success_notice: Маршрут создан!
+
+      update:
+        success_notice: Маршрут обновлён
+
+      destroy:
+        success_notice: Маршрут удалён!
+
     carriages:
       new_submit: Создать вагон
 
@@ -175,3 +245,12 @@ ru:
 
       edit:
         title: Редактирование вагона
+
+      create:
+        success_notice: Вагон создан!
+
+      update:
+        success_notice: Вагон обновлён!
+
+      destroy:
+        success_notice: Вагон удалён!

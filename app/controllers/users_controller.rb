@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: 'Пользователь успешно обновлён!'
+      redirect_to admin_user_path(@user), notice: t('.success_notice')
     else
       render :edit
     end

@@ -7,35 +7,29 @@ class RailwayStationsRoute < ActiveRecord::Base
   validates :route_id, uniqueness: { scope: :railway_station_id }
   validates :position, numericality: {
     only_integer: true,
-    greater_than: 0,
-    message: 'Позиция может быть задана только положительным числом!'
+    greater_than: 0
   }
 
   validates :position, uniqueness: {
-    scope: :route_id,
-    message: 'Такая позиция уже занята!'
+    scope: :route_id
   }
 
   validates :arrival_datetime, timeliness: {
     type: :datetime,
-    invalid_datetime_message: 'Неправильный формат даты для поля arrival_datetime',
     allow_blank: true
   }
 
   validates :departure_datetime, timeliness: {
     type: :datetime,
-    invalid_datetime_message: 'Неправильный формат даты для поля departure_datetime',
     allow_blank: true
   }
 
   validates :arrival_datetime, timeliness: {
     after: :now,
-    after_message: 'Дата отправления должна быть в будущем!'
   }, allow_blank: true
 
   validates :departure_datetime, timeliness: {
     after: :now,
-    after_message: 'Дата прибытия должна быть в будущем!'
   }, allow_blank: true
 
   validates :arrival_datetime, timeliness: {
@@ -43,7 +37,6 @@ class RailwayStationsRoute < ActiveRecord::Base
     if: -> (railway_stations_route) do
       railway_stations_route.departure_datetime.present? && railway_stations_route.departure_datetime.present?
     end,
-    before_message: 'Дата прибытия должна быть до даты отправления!'
   }
 
   private

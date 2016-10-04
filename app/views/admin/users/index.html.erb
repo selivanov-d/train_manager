@@ -1,23 +1,27 @@
 <% @page_title = t '.title' %>
 
 <div class="admin-user-index">
-<table class="admin-user-index_table">
-  <thead>
-  <tr>
-    <th><%= User.human_attribute_name(:full_name) %></th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+  <table class="admin-user-index_table">
+    <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:full_name) %></th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
 
-  <tbody>
-  <% @users.each do |user| %>
-      <tr>
-        <td><%= user.full_name %></td>
-        <td><%= link_to t('common.show'), admin_user_path(user) %></td>
-        <td><%= link_to t('common.edit'), edit_admin_user_path(user) %></td>
-        <td><%= link_to t('common.destroy'), admin_user_path(user), method: :delete, data: { confirm: t('common.are_you_sure') } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+    <tbody>
+    <% @users.each do |user| %>
+        <tr>
+          <td><%= user.full_name %></td>
+          <td><%= link_to t('common.show'), admin_user_path(user) %></td>
+          <td>
+            <%= link_to edit_admin_user_path(user) do
+              bs_icon :remove, tooltip: t('common.edit')
+            end %>
+          </td>
+          <td><%= link_to t('common.destroy'), admin_user_path(user), method: :delete, data: { confirm: t('common.are_you_sure') } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>

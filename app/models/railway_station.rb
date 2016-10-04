@@ -3,7 +3,7 @@ class RailwayStation < ActiveRecord::Base
   has_many :railway_stations_routes, dependent: :destroy
   has_many :routes, through: :railway_stations_routes
 
-  validates :name, presence: { message: 'У станции должно быть название!' }
+  validates :name, presence: true
 
   scope :ordered, -> { order('railway_stations_routes.position') }
 
