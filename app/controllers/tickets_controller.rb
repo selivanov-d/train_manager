@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :destroy]
+  before_action :authenticate_user!
+  before_action :set_ticket_and_check_its_owner, only: [:show, :destroy]
 
   def index
     @tickets = current_user.tickets
@@ -23,7 +24,8 @@ class TicketsController < ApplicationController
 
   private
 
-  def set_ticket
-    @ticket = Ticket.find(params[:id])
+  def set_ticket_and_check_its_owner
+    @ticket = current_user.tickets.find(params[:id])
+    redirect_to root_path, alert: 'Доступ запрещён!' unless @ticket.user == current_user
   end
 end
