@@ -1,6 +1,12 @@
 <h1><%= @user.full_name %></h1>
 
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
 <% if @user.tickets.present? %>
+    <p>&nbsp;</p>
     <h3>Билеты</h3>
 
     <table>
@@ -17,5 +23,4 @@
     <h3>У пользователя пока нет билетов</h3>
 <% end %>
 
-<%= link_to 'Редактировать', edit_user_path(@user) %> |
-<%= link_to 'К списку пользователей', users_path %>
+<%= link_to 'Редактировать профиль', edit_user_path(@user) %>

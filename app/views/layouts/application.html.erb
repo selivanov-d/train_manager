@@ -7,7 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'common/header' %>
+  <% if current_user && current_user.admin? %>
+    <%= render 'common/admin_header' %>
+  <% else %>
+    <%= render 'common/user_header' %>
+  <% end %>
 
   <%= render 'common/notice_panel' %>
 

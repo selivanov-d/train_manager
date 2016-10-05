@@ -1,0 +1,23 @@
+<% if @ticket.errors.any? %>
+    <%= render 'common/errors', resource: @ticket %>
+<% end %>
+
+<%= form_for @ticket do |f| %>
+    <%= f.hidden_field :train_id, value: @train_id %>
+    <%= f.hidden_field :departure_station_id, value: @departure_station_id %>
+    <%= f.hidden_field :arrival_station_id, value: @arrival_station_id %>
+
+    <div class="field">
+      <%= label_tag :buyer_first_name, 'Имя покупателя' %><br>
+      <%= text_field_tag :buyer_first_name, current_user.first_name %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :buyer_second_name, 'Фамилия покупателя' %><br>
+      <%= text_field_tag :buyer_second_name, current_user.family_name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Сохранить' %>
+    </div>
+<% end %>

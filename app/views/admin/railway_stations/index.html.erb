@@ -1,0 +1,17 @@
+<h1>Список станций</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @railway_stations %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Создать станцию', new_admin_railway_station_path %>

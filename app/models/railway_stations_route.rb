@@ -2,8 +2,6 @@ class RailwayStationsRoute < ActiveRecord::Base
   belongs_to :railway_station
   belongs_to :route
 
-  # REVIEW: не разобрался до конца почему эта валидация срабатывает 2n раз при сохранении родительской модели (Route)
-  # Позиции присваиваются верно, но сам метод отрабатывает больше раз чем нужно.
   before_validation :before_validation_assign_position, on: :create
 
   validates :route_id, uniqueness: { scope: :railway_station_id }

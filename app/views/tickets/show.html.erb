@@ -10,7 +10,7 @@
 
 <p>
   <strong>Станция отправления:</strong>
-  <%= link_to @ticket.departure_station.name, railway_station_path(@ticket.departure_station) %>
+  <%= @ticket.departure_station.name %>
   <br>
   <strong>Дата и время отправления:</strong>
   <%= @ticket.train.route.station_in_route(@ticket.departure_station.id).departure_datetime.strftime('%d.%m.%Y %H:%M') %>
@@ -18,7 +18,7 @@
 
 <p>
   <strong>Станция прибытия:</strong>
-  <%= link_to @ticket.arrival_station.name, railway_station_path(@ticket.arrival_station) %>
+  <%= @ticket.arrival_station.name %>
   <br>
   <strong>Дата и время прибытия:</strong>
   <%= @ticket.train.route.station_in_route(@ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>

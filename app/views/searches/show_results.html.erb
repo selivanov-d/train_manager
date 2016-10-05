@@ -1,8 +1,12 @@
 <h1>Поиск поездов по маршруту "<%= station_name_by_id(@search.departure_station_id) %>–<%= station_name_by_id(@search.arrival_station_id) %>"</h1>
 
+<% if @search.errors.any? %>
+    <%= render 'common/errors', resource: @search %>
+<% end %>
+
 <%= render 'form' %>
 
-<% if @search.valid? && @search.result.present? %>
+<% if @search.result.present? %>
     <table>
       <thead>
       <th>Номер поезда</th>

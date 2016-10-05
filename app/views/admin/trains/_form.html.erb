@@ -1,0 +1,24 @@
+<% if @train.errors.any? %>
+    <%= render 'common/errors', resource: @train %>
+<% end %>
+
+<%= form_for [:admin, @train] do |f| %>
+    <div class="field">
+      <%= f.label :number, 'Номер' %><br>
+      <%= f.text_field :number %>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :position_from_head %>
+      <%= f.label :position_from_head, 'Нумерация с головы поезда' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :route, 'Маршрут' %><br>
+      <%= f.collection_select :route_id, Route.select(:id, :name).all, :id, :name, include_blank: 'Без маршрута' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Сохранить' %>
+    </div>
+<% end %>

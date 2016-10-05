@@ -1,43 +1,20 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_ticket_and_check_its_owner, only: [:show, :destroy]
 
   def index
-    @tickets = Ticket.all
+    @tickets = current_user.tickets
   end
 
   def show
   end
 
-  def new
-    @ticket = Ticket.new
-
-    @train_id = params[:train_id]
-    @departure_station_id = params[:departure_station_id]
-    @arrival_station_id = params[:arrival_station_id]
-
-    render :new
-  end
-
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = Ticket.new(train_id: params[:train_id], departure_station_id: params[:departure_station_id], arrival_station_id: params[:arrival_station_id])
 
-    user = User.find_or_initialize_by(first_name: params[:buyer_first_name], family_name: params[:buyer_second_name])
+    current_user.tickets << @ticket
 
-    if user.new_record?
-      unless user.save
-        flash.alert = get_errors_as_array_of_strings_for(user)
-        render :new
-      end
-    end
-
-    @ticket.user_id = user.id
-
-    if @ticket.save
-      redirect_to @ticket, notice: 'Билет создан!'
-    else
-      flash.alert = get_errors_as_array_of_strings_for(@ticket)
-      render :new
-    end
+    redirect_to @ticket, notice: 'Билет создан!'
   end
 
   def destroy
@@ -47,11 +24,8 @@ class TicketsController < ApplicationController
 
   private
 
-  def set_ticket
-    @ticket = Ticket.find(params[:id])
-  end
-
-  def ticket_params
-    params.require(:ticket).permit(:train_id, :departure_station_id, :arrival_station_id)
+  def set_ticket_and_check_its_owner
+    @ticket = current_user.tickets.find(params[:id])
+    redirect_to root_path, alert: 'Доступ запрещён!' unless @ticket.user == current_user
   end
 end
