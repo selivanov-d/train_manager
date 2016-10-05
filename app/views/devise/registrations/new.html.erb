@@ -1,29 +1,31 @@
-<% @page_title = 'Зарегистрироваться' %>
+<% @page_title = t '.title' %>
 
 <% content_for :sidebar do %>
-    <%= devise_error_messages! %>
+    <% if @user.errors.any? %>
+        <%= render 'common/errors', resource: @user %>
+    <% end %>
 <% end %>
 
 <%= form_for resource, as: resource_name, url: registration_path(resource_name), class: 'devise-user-signup-form' do |f| %>
     <div class="devise-user-signup-form_input-row">
-      <%= f.label :first_name %><br/>
+      <%= f.label :first_name %>
       <%= f.text_field :first_name, class: 'devise-user-signup-form_input' %>
     </div>
 
     <div class="devise-user-signup-form_input-row">
-      <%= f.label :family_name %><br/>
+      <%= f.label :family_name %>
       <%= f.text_field :family_name, class: 'devise-user-signup-form_input' %>
     </div>
 
     <div class="devise-user-signup-form_input-row">
-      <%= f.label :email %><br/>
+      <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, class: 'devise-user-signup-form_input' %>
     </div>
 
     <div class="devise-user-signup-form_input-row">
       <%= f.label :password %>
       <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> символов минимум)</em>
+          <em>(<%= t '.minimal_length', minimal_length: @minimum_password_length %>)</em>
       <% end %><br/>
       <%= f.password_field :password, autocomplete: "off", class: 'devise-user-signup-form_input' %>
     </div>
@@ -34,7 +36,7 @@
     </div>
 
     <div class="devise-user-signup-form_actions">
-      <%= f.submit 'Зарегистрироваться', class: 'devise-user-signup-form_save-button' %>
+      <%= f.submit t('.singup'), class: 'devise-user-signup-form_submit-button' %>
     </div>
 <% end %>
 

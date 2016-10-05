@@ -5,24 +5,24 @@
 <% end %>
 
 <%= form_for [:admin, @user], class: 'admin-user-form' do |f| %>
-    <div class="admin-user-form_input-wrapper">
+    <div class="admin-user-form_input-row">
       <%= f.label :first_name %>
       <%= f.text_field :first_name, class: 'admin-user-form_input' %>
     </div>
 
-    <div class="admin-user-form_input-wrapper">
+    <div class="admin-user-form_input-row">
       <%= f.label :family_name %>
       <%= f.text_field :family_name, class: 'admin-user-form_input' %>
     </div>
 
     <% if @user == current_user %>
-      <div class="admin-user-form_input-wrapper">
+      <div class="admin-user-form_input-row">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, class: 'admin-user-form_input' %>
       </div>
     <% end %>
 
-    <div class="actions">
-      <%= f.submit t('common.submit'), class: 'admin-user-form_save-button' %>
+    <div class="admin-user-form_actions">
+      <%= f.submit t('common.submit'), class: 'admin-user-form_submit-button' %>
     </div>
 <% end %>

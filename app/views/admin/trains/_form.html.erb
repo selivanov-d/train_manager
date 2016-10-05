@@ -1,5 +1,7 @@
-<% if @train.errors.any? %>
-    <%= render 'common/errors', resource: @train %>
+<% content_for :sidebar do %>
+    <% if @train.errors.any? %>
+        <%= render 'common/errors', resource: @train %>
+    <% end %>
 <% end %>
 
 <%= form_for [:admin, @train], class: 'admin-train-form' do |f| %>
@@ -8,8 +10,8 @@
       <%= f.text_field :number, class: 'admin-train-form_input' %>
     </div>
 
-    <div class="admin-train-form_input-row">
-      <%= f.label :position_from_head, class: 'admin-train-form_checkbox-wrapper' do %>
+    <div class="admin-train-form_checkbox-wrapper">
+      <%= f.label :position_from_head do %>
           <%= f.check_box :position_from_head %>
           <%= Train.human_attribute_name(:position_from_head) %>
       <% end %>
@@ -21,6 +23,6 @@
     </div>
 
     <div class="actions">
-      <%= f.submit t 'common.submit', class: 'admin-train-form_save-button' %>
+      <%= f.submit t('common.submit'), class: 'admin-train-form_submit-button' %>
     </div>
 <% end %>

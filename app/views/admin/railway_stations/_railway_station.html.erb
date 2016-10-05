@@ -1,6 +1,6 @@
 <tr>
   <td><%= railway_station.name %></td>
-  <td>
+  <td class="admin-stations-table_controls">
     <%= link_to admin_railway_station_path(railway_station) do
       bs_icon 'eye-open', tooltip: t('common.show')
     end %>

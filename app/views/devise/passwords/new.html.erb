@@ -1,16 +1,22 @@
-<h2>Забыли пароль?</h2>
+<% @page_title = t '.title' %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit 'Отправить мне инструкции по сбросу пароля' %>
-  </div>
+<% content_for :sidebar do %>
+    <% if @user.errors.any? %>
+        <%= render 'common/errors', resource: @user %>
+    <% end %>
 <% end %>
 
-<%= render 'devise/shared/links' %>
+<div class="password-new">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'password-new-form' }) do |f| %>
+      <div class="password-new-form_input-row">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: 'password-new-form_input' %>
+      </div>
+
+      <div class="password-new-form_actions">
+        <%= f.submit t('.send_me_instructions'), class: 'password-new-form_submit-button' %>
+      </div>
+  <% end %>
+
+  <%= render 'devise/shared/links' %>
+</div>

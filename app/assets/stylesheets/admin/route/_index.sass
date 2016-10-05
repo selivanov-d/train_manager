@@ -1,9 +1,5 @@
 .admin-routes-index
-  &_actions
-    padding-top: 30px
+  @include default-action-page
 
-  &_new-button
-    @extend .btn, .btn-success
-
-  &_table
-    @extend .table, .table-striped
+.admin-routes-index-table
+  @include default-table

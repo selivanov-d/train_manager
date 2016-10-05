@@ -8,28 +8,29 @@
 
 <%= render 'form' %>
 
-<% if @search.result.present? %>
-    <table class="search-result-table">
-      <thead>
-      <th>Номер поезда</th>
-      <th>Маршрут</th>
-      <th>Время
-        отправления<br/><span class="station-name-comment">со станции "<%= station_name_by_id(@search.departure_station_id) %>
-        "</span></th>
-      <th>Время
-        прибытия<br/><span class="station-name-comment">на станции "<%= station_name_by_id(@search.arrival_station_id) %>
-        "</span></th>
-      <th></th>
-      </thead>
-      <tbody>
-      <%= render partial: 'result_item', collection: @search.result, as: :train,
-          locals: {
-              departure_station_id: @search.departure_station_id,
-              arrival_station_id: @search.arrival_station_id
-          } %>
-      </tbody>
-    </table>
-<% else %>
-    <p><%= t '.no_results' %></p>
-<% end %>
-
+<div class="search-result">
+  <% if @search.result.present? %>
+      <table class="search-result-table">
+        <thead>
+        <th>Номер поезда</th>
+        <th>Маршрут</th>
+        <th>Время
+          отправления<br/><span class="station-name-comment">со станции "<%= station_name_by_id(@search.departure_station_id) %>
+          "</span></th>
+        <th>Время
+          прибытия<br/><span class="station-name-comment">на станции "<%= station_name_by_id(@search.arrival_station_id) %>
+          "</span></th>
+        <th></th>
+        </thead>
+        <tbody>
+        <%= render partial: 'result_item', collection: @search.result, as: :train,
+            locals: {
+                departure_station_id: @search.departure_station_id,
+                arrival_station_id: @search.arrival_station_id
+            } %>
+        </tbody>
+      </table>
+  <% else %>
+      <p><%= t '.no_results' %></p>
+  <% end %>
+</div>

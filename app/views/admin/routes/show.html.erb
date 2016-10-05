@@ -18,9 +18,9 @@
       <table class="route-stations">
         <thead>
         <th><%= RailwayStationsRoute.human_attribute_name(:position) %></th>
-        <th><%= RailwayStation.human_attribute_name(:name) %>Название</th>
-        <th><%= t 'common.arrival_date_and_time' %></th>
-        <th><%= t 'common.departure_date_and_time' %></th>
+        <th><%= RailwayStation.human_attribute_name(:name) %></th>
+        <th><%= RailwayStationsRoute.human_attribute_name(:arrival_date_and_time) %></th>
+        <th><%= RailwayStationsRoute.human_attribute_name(:departure_date_and_time) %></th>
         </thead>
         <tbody>
         <%= render partial: 'admin/railway_stations/railway_station_as_table_row',

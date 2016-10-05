@@ -1,10 +1,34 @@
 .admin-route-show
+  @include default-action-page
 
-  &_actions
-    padding-top: 30px
+.route-stations
+  @include default-table
 
-  &_edit-button
-    @extend .btn, .btn-primary
+  width: 100%
+  vertical-align: top
 
-  &_back-button
-    @extend .btn, .btn-default
+.departure-datetime-form, .arrival-datetime-form, .position-form
+  &_submit-button
+    @extend .btn, .btn-xs, .btn-info
+
+.departure-datetime-form, .arrival-datetime-form
+  select
+    @extend .form-control
+
+    &.year, &.month, &.day, &.hour, &.minute
+      float: left
+      margin-left: 2%
+      margin-bottom: 10px
+
+    &.year, &.month, &.day
+      width: 32%
+
+    &.hour, &.minute
+      width: 49%
+
+    &.year, &.hour
+      margin-left: 0
+
+.position-form
+  &_input
+    @extend .form-control

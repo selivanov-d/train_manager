@@ -1,4 +1,4 @@
-<% @page_title = t('.title', @train.number) %>
+<% @page_title = t('.title', train_number: @train.number) %>
 
 <p>
   <strong>Номер:</strong>
@@ -15,6 +15,7 @@
 </p>
 
 <% if @train.carriages.present? %>
+    <h4>Вагоны</h4>
     <%= render partial: 'carriages/carriage_as_list_item',
         collection: @train.carriages.ordered_by(@train.position_from_head),
         as: :carriage

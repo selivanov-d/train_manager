@@ -1,9 +1,5 @@
 .admin-train-index
-  &_table
-    @extend .table, .table-striped
+  @include default-action-page
 
-  &_actions
-    padding-top: 30px
-
-  &_new-button
-    @extend .btn, .btn-success
+.admin-train-index-table
+  @include default-table

@@ -9,7 +9,7 @@
   <% if @user.tickets.present? %>
       <h3><%= t 'common.tickets' %></h3>
 
-      <table class="admin-user-show_tickets-table">
+      <table class="admin-user-show_tickets-table admin-user-show-tickets-table">
         <thead>
         <th><%= Train.human_attribute_name(:number) %></th>
         <th><%= RailwayStationsRoute.human_attribute_name(:station_name_and_departure_time) %></th>

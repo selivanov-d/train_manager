@@ -18,6 +18,7 @@ ru:
     return_to_routes: К списку маршрутов
     return_to_railway_stations: К списку станций
     return_to_trains: К списку поездов
+    back: Назад
 
     edit: Редактировать
     show: Смотреть
@@ -43,6 +44,11 @@ ru:
       users: Пользователи
       search: Поиск
       my_tickets: Мои билеты
+
+  trains:
+    show:
+      title: "Поезд №%{train_number}"
+      carriages: Прицепленные вагоны
 
   tickets:
     index:

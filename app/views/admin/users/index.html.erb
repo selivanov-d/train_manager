@@ -1,7 +1,7 @@
 <% @page_title = t '.title' %>
 
 <div class="admin-user-index">
-  <table class="admin-user-index_table">
+  <table class="admin-user-index_table admin-user-index-table">
     <thead>
     <tr>
       <th><%= User.human_attribute_name(:full_name) %></th>
@@ -12,8 +12,8 @@
     <tbody>
     <% @users.each do |user| %>
         <tr>
-          <td><%= user.full_name %></td>
-          <td>
+          <td><%= link_to user.full_name, admin_user_path(user) %></td>
+          <td class="admin-user-index-table_controls">
             <%= link_to admin_user_path(user) do
               bs_icon 'eye-open', tooltip: t('common.show')
             end %>

@@ -36,6 +36,7 @@ ru:
         email: Email
 
       railway_stations_route:
+        position: Позиция
         departure_date_and_time: Дата и время отправления
         arrival_date_and_time: Дата и время прибытия
         station_name_and_departure_time: Станция и время отправления

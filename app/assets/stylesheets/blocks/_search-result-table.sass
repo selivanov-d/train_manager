@@ -1,2 +1,8 @@
+.search-result
+  padding-top: 30px
+
 .search-result-table
-  @extend .table, .table-striped
+  @include default-table
+
+  &_buy-button
+    @extend .btn, .btn-info, .btn-xs

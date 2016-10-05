@@ -1,7 +1,7 @@
 <% @page_title = t '.title' %>
 
 <div class="admin-routes-index">
-  <table class="admin-routes-index_table">
+  <table class="admin-routes-index_table admin-routes-index-table">
     <thead>
     <tr>
       <th><%= t '.name' %></th>
@@ -13,7 +13,7 @@
     <% @routes.each do |route| %>
         <tr>
           <td><%= route.name %></td>
-          <td>
+          <td class="admin-routes-index-table_controls">
             <%= link_to admin_route_path(route) do
               bs_icon 'eye-open', tooltip: t('common.show')
             end %>

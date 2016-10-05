@@ -1,12 +1,5 @@
 .admin-user-show
-  &_actions
-    padding-top: 30px
+  @include default-action-page
 
-  &_edit-button
-    @extend .btn, .btn-primary
-
-  &_back-button
-    @extend .btn, .btn-default
-
-  &_tickets-table
-    @extend .table, .table-striped
+.admin-user-show-tickets-table
+  @include default-table

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'admin/train#index'
+  root 'admin/trains#index'
 
   devise_for :users, :controllers => { :registrations => 'users/registrations' }
 

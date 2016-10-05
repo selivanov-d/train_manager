@@ -1,12 +1,5 @@
 .user-show
-  &_actions
-    padding-top: 30px
+  @include default-action-page
 
-  &_tickets-table
-    @extend .table, .table-striped
-
-  &_edit-button
-    @extend .btn, .btn-primary
-
-  &_back-button
-    @extend .btn, .btn-default
+.user-show-tickets-table
+  @include default-table

@@ -9,7 +9,7 @@
             <%= hidden_field_tag :train_id, train.id %>
             <%= hidden_field_tag :departure_station_id, departure_station_id %>
             <%= hidden_field_tag :arrival_station_id, arrival_station_id %>
-            <%= button_tag t '.buy' %>
+            <%= button_tag t('.buy'), class: 'search-result-table_buy-button' %>
         <% end %>
     <% end %>
   </td>
