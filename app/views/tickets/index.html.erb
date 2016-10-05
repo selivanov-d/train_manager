@@ -15,14 +15,14 @@
         <tbody>
         <% @tickets.each do |ticket| %>
             <tr>
-              <td><%= link_to ticket.train.number, admin_train_path(ticket.train) %></td>
+              <td><%= link_to ticket.train.number, train_path(ticket.train) %></td>
               <td>
-                <%= link_to ticket.departure_station.name, admin_railway_station_path(ticket.departure_station) %>
+                <%= ticket.departure_station.name %>
                 <br/>
                 <%= ticket.train.route.station_in_route(ticket.departure_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
               </td>
               <td>
-                <%= link_to ticket.arrival_station.name, admin_railway_station_path(ticket.arrival_station) %>
+                <%= ticket.arrival_station.name %>
                 <br/>
                 <%= ticket.train.route.station_in_route(ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
               </td>

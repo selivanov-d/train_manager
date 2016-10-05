@@ -5,12 +5,12 @@
 <% end %>
 
 <%= form_for [:admin, @route], class: 'admin-route-form' do |f| %>
-    <div class="admin-route-form_input-wrapper">
+    <div class="admin-route-form_input-row">
       <%= f.label :name %>
       <%= f.text_field :name, class: 'admin-route-form_input' %>
     </div>
 
-    <div class="admin-route-form_input-wrapper">
+    <div class="admin-route-form_input-row">
     <%= f.label :railway_station_ids %>
     <%= f.collection_select :railway_station_ids, RailwayStation.select(:id, :name).all, :id, :name, {}, { multiple: true, class: 'admin-route-form_input' } %>
     </div>

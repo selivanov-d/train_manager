@@ -75,6 +75,10 @@ ru:
 
     show_results:
       no_results: По заданным критериям не найдено ни одного поезда.
+      route: Маршрут
+      train: Поезд
+      departure_datetime: "Время отправления со станции \"%{station_name}\""
+      arrival_datetime: "Время прибытия на станцию \"%{station_name}\""
 
     result_item:
       buy: Купить билет

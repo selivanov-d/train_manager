@@ -1,5 +1,5 @@
 <p>
-  <strong><%= t 'admin.routes.attributes.name' %>:</strong>
+  <strong><%= t Route.human_attribute_name(:name) %>:</strong>
   <%= @route.name %>
 </p>
 
@@ -19,10 +19,10 @@
   <% if @route.railway_stations.present? %>
     <table class="route-stations">
       <thead>
-      <th><%= t 'admin.routes.show.position' %></th>
-      <th><%= t 'admin.routes.attributes.name' %></th>
-      <th><%= t 'common.arrival_date_and_time' %></th>
-      <th><%= t 'common.departure_date_and_time' %></th>
+      <th><%= RailwayStationsRoute.human_attribute_name(:position) %></th>
+      <th><%= RailwayStation.human_attribute_name(:name) %></th>
+      <th><%= RailwayStationsRoute.human_attribute_name(:arrival_date_and_time) %></th>
+      <th><%= RailwayStationsRoute.human_attribute_name(:departure_date_and_time) %></th>
       </thead>
       <tbody>
       <%= render partial: 'railway_stations/railway_station_as_table_row',

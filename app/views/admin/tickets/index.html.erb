@@ -1,20 +1,22 @@
 <% @page_title = t '.title' %>
 
-<% if @tickets.present? %>
-    <table>
-      <thead>
-      <tr>
-        <th><%= Ticket.human_attribute_name(:user_id) %></th>
-        <th><%= Ticket.human_attribute_name(:train_id) %></th>
-        <th><%= Ticket.human_attribute_name(:departure_station_id) %></th>
-        <th><%= Ticket.human_attribute_name(:arrival_station_id) %></th>
-        <th colspan="2"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <%= render partial: 'admin/tickets/ticket_as_table_row_full', collection: @tickets, as: :ticket %>
-      </tbody>
-    </table>
-<% else %>
-    <h3><%= t '.no_tickets' %></h3>
-<% end %>
+<div class="admin-tickets-index">
+  <% if @tickets.present? %>
+      <table class="admin-tickets-index-table">
+        <thead>
+        <tr>
+          <th><%= Ticket.human_attribute_name(:user_id) %></th>
+          <th><%= Ticket.human_attribute_name(:train_id) %></th>
+          <th><%= Ticket.human_attribute_name(:departure_station_id) %></th>
+          <th><%= Ticket.human_attribute_name(:arrival_station_id) %></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render partial: 'admin/tickets/ticket_as_table_row_full', collection: @tickets, as: :ticket %>
+        </tbody>
+      </table>
+  <% else %>
+      <h3><%= t '.no_tickets' %></h3>
+  <% end %>
+</div>

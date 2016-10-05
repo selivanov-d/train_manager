@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to train.id, train_path(train), target: '_blank' %></td>
   <td><%= link_to train.route.name, route_path(train.route), target: '_blank' %></td>
-  <td><%= train.route.station_in_route(arrival_station_id).departure_datetime.strftime('%d.%m.%Y %H:%M') %></td>
+  <td><%= train.route.station_in_route(departure_station_id).departure_datetime.strftime('%d.%m.%Y %H:%M') %></td>
   <td><%= train.route.station_in_route(arrival_station_id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %></td>
   <td>
     <% if current_user %>

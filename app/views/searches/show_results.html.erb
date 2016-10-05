@@ -12,14 +12,10 @@
   <% if @search.result.present? %>
       <table class="search-result-table">
         <thead>
-        <th>Номер поезда</th>
-        <th>Маршрут</th>
-        <th>Время
-          отправления<br/><span class="station-name-comment">со станции "<%= station_name_by_id(@search.departure_station_id) %>
-          "</span></th>
-        <th>Время
-          прибытия<br/><span class="station-name-comment">на станции "<%= station_name_by_id(@search.arrival_station_id) %>
-          "</span></th>
+        <th><%= t '.train' %></th>
+        <th><%= t '.route' %></th>
+        <th><%= t '.departure_datetime', station_name: station_name_by_id(@search.departure_station_id) %></th>
+        <th><%= t '.arrival_datetime', station_name: station_name_by_id(@search.arrival_station_id) %></th>
         <th></th>
         </thead>
         <tbody>

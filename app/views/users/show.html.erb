@@ -2,26 +2,26 @@
 
 <div class="user-show">
   <p>
-    <strong><%= t 'common.user_name' %>:</strong>
+    <strong><%= User.human_attribute_name(:full_name) %>:</strong>
     <%= @user.full_name %>
   </p>
 
   <p>
-    <strong><%= t 'common.user_email' %>:</strong>
+    <strong><%= User.human_attribute_name(:email) %>:</strong>
     <%= @user.email %>
   </p>
 
   <% if @user.tickets.present? %>
       <h3>Билеты</h3>
 
-      <table class="user-show_tickets-table">
+      <table class="user-show-tickets-table">
         <thead>
-        <th><%= t 'common.train_number' %></th>
-        <th><%= t 'common.station_name_and_departure_time' %></th>
-        <th><%= t 'common.station_name_and_arrive_time' %></th>
+        <th><%= Train.human_attribute_name(:number) %></th>
+        <th><%= RailwayStationsRoute.human_attribute_name(:station_name_and_departure_time) %></th>
+        <th><%= RailwayStationsRoute.human_attribute_name(:station_name_and_arrive_time) %></th>
         </thead>
         <tbody>
-        <%= render partial: 'admin/tickets/ticket_as_table_row', collection: @user.tickets, as: :ticket %>
+        <%= render partial: 'tickets/ticket_as_table_row', collection: @user.tickets, as: :ticket %>
         </tbody>
       </table>
   <% else %>

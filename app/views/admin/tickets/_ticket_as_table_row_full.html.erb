@@ -11,6 +11,12 @@
     <br/>
     <%= ticket.train.route.station_in_route(ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
   </td>
-  <td><%= link_to t('common.show'), admin_ticket_path(ticket) %></td>
-  <td><%= link_to t('common.destroy'), admin_ticket_path(ticket), method: :delete, data: { confirm: t('common.are_you_sure') } %></td>
+  <td class="admin-tickets-index-table_controls">
+    <%= link_to admin_ticket_path(ticket) do
+      bs_icon 'eye-open', tooltip: t('common.show')
+    end %>
+    <%= link_to admin_ticket_path(ticket), method: :delete, data: { confirm: t('common.are_you_sure') } do
+      bs_icon :remove, tooltip: t('common.destroy')
+    end %>
+  </td>
 </tr>
