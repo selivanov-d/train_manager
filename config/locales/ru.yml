@@ -18,7 +18,9 @@ ru:
     return_to_routes: К списку маршрутов
     return_to_railway_stations: К списку станций
     return_to_trains: К списку поездов
+
     back: Назад
+    here: здесь
 
     edit: Редактировать
     show: Смотреть
@@ -268,3 +270,18 @@ ru:
 
       destroy:
         success_notice: Вагон удалён!
+
+  tickets_mailer:
+    ticket_bought_notification:
+      mail_title: "TrainManager: Вы купили билет"
+      greeting: "Привет, %{user_name}!"
+      bought_ticket_message: "Вы купили билет по маршруту \"%{route_name}\"."
+      ticket_show_message: "Посмотреть билет вы можете %{ticket_link}"
+      all_tickets_message: "Все свои билеты вы можете посмотреть %{link_to_all_tickets}."
+
+    ticket_canceled_notification:
+      mail_title: "TrainManager: Ваш билет аннулирован"
+      greeting: "Привет, %{user_name}!"
+      cancel_message: "Ваш билет на поезд по маршруту \"%{route_name}\" аннулирован."
+      new_ticket_message: "Новый билет вы можете найти %{link_to_search}."
+      all_tickets_message: "Все свои билеты вы можете посмотреть %{link_to_all_tickets}."
