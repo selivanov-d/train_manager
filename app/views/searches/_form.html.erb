@@ -1,27 +1,31 @@
-<%= form_for @search, method: :post, url: search_path, class: 'search-form' do |f| %>
-    <fieldset class="search-form_fields-wrapper">
-      <div class="search-form_select-label-wrapper">
-        <%= f.label :departure_station_id, 'От', class: 'search-form_select-label' %>
-        <div class="search-form_select-wrapper">
-          <%= f.select :departure_station_id,
-              RailwayStation.select(:id, :name).all.map { |station| [station.name, station.id] },
-              {},
-              class: 'search-form_select'
-          %>
-        </div>
-      </div>
-      <div class="search-form_select-label-wrapper">
-        <%= f.label :arrival_station_id, 'До', class: 'search-form_select-label' %>
-        <div class="search-form_select-wrapper">
-          <%= f.select :arrival_station_id,
-              RailwayStation.select(:id, :name).all.map { |station| [station.name, station.id] },
-              {},
-              class: 'search-form_select'
-          %>
-        </div>
-      </div>
-      <div class="search-form_submit-button-wrapper">
-        <%= f.submit t('common.make_search'), class: 'search-form_submit-button' %>
-      </div>
-    </fieldset>
+<% if RailwayStation.count > 2 %>
+    <%= form_for @search, method: :post, url: search_path, class: 'search-form' do |f| %>
+        <fieldset class="search-form_fields-wrapper">
+          <div class="search-form_select-label-wrapper">
+            <%= f.label :departure_station_id, 'От', class: 'search-form_select-label' %>
+            <div class="search-form_select-wrapper">
+              <%= f.select :departure_station_id,
+                  RailwayStation.select(:id, :name).all.map { |station| [station.name, station.id] },
+                  {},
+                  class: 'search-form_select'
+              %>
+            </div>
+          </div>
+          <div class="search-form_select-label-wrapper">
+            <%= f.label :arrival_station_id, 'До', class: 'search-form_select-label' %>
+            <div class="search-form_select-wrapper">
+              <%= f.select :arrival_station_id,
+                  RailwayStation.select(:id, :name).all.map { |station| [station.name, station.id] },
+                  {},
+                  class: 'search-form_select'
+              %>
+            </div>
+          </div>
+          <div class="search-form_submit-button-wrapper">
+            <%= f.submit t('common.make_search'), class: 'search-form_submit-button' %>
+          </div>
+        </fieldset>
+    <% end %>
+<% else %>
+    <h4><%= t '.unavailable' %></h4>
 <% end %>

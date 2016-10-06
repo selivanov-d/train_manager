@@ -1,18 +1,22 @@
 <% @page_title = t '.title' %>
 
 <div class="admin-stations">
-  <table class="admin-stations_table admin-stations-table">
-    <thead>
-    <tr>
-      <th><%= RailwayStation.human_attribute_name(:name) %></th>
-      <th></th>
-    </tr>
-    </thead>
+  <% if @railway_stations.any? %>
+      <table class="admin-stations_table admin-stations-table">
+        <thead>
+        <tr>
+          <th><%= RailwayStation.human_attribute_name(:name) %></th>
+          <th></th>
+        </tr>
+        </thead>
 
-    <tbody>
-    <%= render @railway_stations %>
-    </tbody>
-  </table>
+        <tbody>
+        <%= render @railway_stations %>
+        </tbody>
+      </table>
+  <% else %>
+      <h4><%= t '.no_stations' %></h4>
+  <% end %>
 
   <div class="admin-stations_actions">
     <%= link_to t('.create'), new_admin_railway_station_path, class: 'admin-stations_new-button' %>
