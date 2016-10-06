@@ -1,5 +1,10 @@
-<h1>Редактировать пользователя</h1>
+<% @page_title = t '.title' %>
 
-<%= render 'form' %>
+<div class="user-edit">
+  <%= render 'form' %>
 
-<%= link_to 'Смотреть', user_path(@user) %>
+  <div class="user-edit_actions">
+    <%= link_to t('common.return_to_users'), admin_users_path, class: 'user-edit_back-button' %>
+    <%= link_to t('common.show'), admin_user_path(@user), class: 'user-edit_show-button' %>
+  </div>
+</div>

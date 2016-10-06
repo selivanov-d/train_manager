@@ -1,9 +1,11 @@
-<div id="error_explanation">
-  <h2>Следующие ошибки помешали сохранению:</h2>
+<div class="errors">
+  <h4 class="errors_header"><%= t 'common.errors_header' %>:</h4>
 
-  <ul>
-    <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <ul class="errors_list errors-list">
+    <% resource.errors.messages.each_value do |field_messages| %>
+        <% field_messages.each do |message| %>
+          <li class="errors-list_item"><%= message %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>

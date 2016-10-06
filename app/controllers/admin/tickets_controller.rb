@@ -10,7 +10,7 @@ class Admin::TicketsController < Admin::BaseController
 
   def destroy
     @ticket.destroy
-    redirect_to admin_tickets_url, notice: 'Билет удалён!'
+    redirect_to admin_tickets_url, notice: t('.success_notice')
   end
 
   private

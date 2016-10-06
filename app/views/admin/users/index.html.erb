@@ -1,21 +1,31 @@
-<h1>Список пользователей</h1>
+<% @page_title = t '.title' %>
 
-<table>
-  <thead>
+<div class="admin-user-index">
+  <table class="admin-user-index_table admin-user-index-table">
+    <thead>
     <tr>
-      <th>Имя</th>
-      <th colspan="3"></th>
+      <th><%= User.human_attribute_name(:full_name) %></th>
+      <th></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @users.each do |user| %>
-      <tr>
-        <td><%= user.full_name %></td>
-        <td><%= link_to 'Смотреть', admin_user_path(user) %></td>
-        <td><%= link_to 'Редактировать', edit_admin_user_path(user) %></td>
-        <td><%= link_to 'Удалить', admin_user_path(user), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-      </tr>
+        <tr>
+          <td><%= link_to user.full_name, admin_user_path(user) %></td>
+          <td class="admin-user-index-table_controls">
+            <%= link_to admin_user_path(user) do
+              bs_icon 'eye-open', tooltip: t('common.show')
+            end %>
+            <%= link_to edit_admin_user_path(user) do
+              bs_icon :pencil, tooltip: t('common.edit')
+            end %>
+            <%= link_to admin_user_path(user), method: :delete, data: { confirm: t('common.are_you_sure') } do
+              bs_icon :remove, tooltip: t('common.destroy')
+            end %>
+          </td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

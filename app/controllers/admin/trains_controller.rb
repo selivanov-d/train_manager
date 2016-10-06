@@ -19,7 +19,7 @@ class Admin::TrainsController < Admin::BaseController
     @train = Train.new(train_params)
 
     if @train.save
-      redirect_to admin_train_path(@train), notice: 'Поезд создан!'
+      redirect_to admin_train_path(@train), notice: t('.success_notice')
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::TrainsController < Admin::BaseController
 
   def update
     if @train.update(train_params)
-      redirect_to admin_train_path(@train), notice: 'Поезд обновлён!'
+      redirect_to admin_train_path(@train), notice: t('.success_notice')
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class Admin::TrainsController < Admin::BaseController
 
   def destroy
     @train.destroy
-    redirect_to admin_trains_url, notice: 'Поезд удалён!'
+    redirect_to admin_trains_url, notice: t('.success_notice')
   end
 
   private

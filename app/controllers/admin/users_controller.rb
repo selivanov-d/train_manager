@@ -19,7 +19,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to admin_user_path(@user), notice: 'Пользователь успешно создан!'
+      redirect_to admin_user_path(@user), notice: t('.success_notice')
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: 'Пользователь успешно обновлён!'
+      redirect_to admin_user_path(@user), notice: t('.success_notice')
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_url, notice: 'Пользователь удалён!'
+    redirect_to admin_users_url, notice: t('.success_notice')
   end
 
   private

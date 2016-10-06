@@ -1,10 +1,10 @@
 <tr>
   <td class="position">
-    <%= form_tag update_position_admin_railway_station_path(railway_station), method: :patch do %>
-        <%= number_field_tag :position, railway_station.station_route(@route).position, class: 'position-input' %>
+    <%= form_tag update_position_admin_railway_station_path(railway_station), method: :patch, class: 'position-form' do %>
+        <%= number_field_tag :position, railway_station.station_route(@route).position, class: 'position-form_input' %>
         <%= hidden_field_tag :route_id, @route.id %>
         <br/>
-        <%= submit_tag 'Изменить' %>
+        <%= submit_tag t('common.submit'), class: 'position-form_submit-button' %>
     <% end %>
   </td>
 
@@ -13,34 +13,42 @@
   </td>
 
   <td class="arrive-datetime">
-    <%= form_tag update_arrival_datetime_admin_railway_station_path(railway_station), method: :patch do %>
+    <%= form_tag update_arrival_datetime_admin_railway_station_path(railway_station), method: :patch, class: 'arrival-datetime-form' do %>
         <%= datetime_select :arrival_datetime, nil,
+            datetime_separator: '<br/>',
+            time_separator: '',
+            with_css_classes: true,
             default: railway_station.station_route(@route).arrival_datetime,
             prompt: -> (date) {
-              return { year: 'Год', month: 'Месяц', day: 'День' } unless date
+              return { year: t('common.year'), month: t('common.month'), day: t('common.day') } unless date
               false
             }.call(railway_station.station_route(@route).arrival_datetime),
             start_year: Time.zone.now.year
         %>
         <%= hidden_field_tag :station_id, railway_station.id %>
         <%= hidden_field_tag :route_id, @route.id %>
-        <%= submit_tag 'Изменить' %>
+        <br/>
+        <%= submit_tag t('common.submit'), class: 'arrival-datetime-form_submit-button' %>
     <% end %>
   </td>
 
   <td class="departure-datetime">
-    <%= form_tag update_departure_datetime_admin_railway_station_path(railway_station), method: :patch do %>
+    <%= form_tag update_departure_datetime_admin_railway_station_path(railway_station), method: :patch, class: 'departure-datetime-form' do %>
         <%= datetime_select :departure_datetime, nil,
+            datetime_separator: '<br/>',
+            time_separator: '',
+            with_css_classes: true,
             default: railway_station.station_route(@route).departure_datetime,
             prompt: -> (date) {
-              return { year: 'Год', month: 'Месяц', day: 'День' } unless date
+              return { year: t('common.year'), month: t('common.month'), day: t('common.day') } unless date
               false
             }.call(railway_station.station_route(@route).departure_datetime),
             start_year: Time.zone.now.year
         %>
         <%= hidden_field_tag :station_id, railway_station.id %>
         <%= hidden_field_tag :route_id, @route.id %>
-        <%= submit_tag 'Изменить' %>
+        <br/>
+        <%= submit_tag t('common.submit'), class: 'departure-datetime-form_submit-button' %>
     <% end %>
   </td>
 </tr>

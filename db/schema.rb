@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160928124014) do
     t.datetime "updated_at",           null: false
   end
 
-  create_table "trains", force: :cascade do |t|
+  create_table "train", force: :cascade do |t|
     t.string   "number"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false

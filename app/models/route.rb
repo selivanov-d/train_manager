@@ -3,11 +3,11 @@ class Route < ActiveRecord::Base
   has_many :railway_stations_routes, dependent: :destroy
   has_many :railway_stations, through: :railway_stations_routes
 
-  validates :name, presence: { message: 'У маршрута должно быть название' }
+  validates :name, presence: true
   validate :count_station
 
   def count_station
-    errors.add(:base, 'Маршрут должен состоять как минимум из одной станции!') if railway_stations.size < 2
+    errors.add(:base, :not_enough_stations) if railway_stations.size < 2
   end
 
   def station_in_route(station_id)

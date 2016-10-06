@@ -2,8 +2,8 @@
   <div class="header_wrapper">
     <nav class="main-menu">
       <ul class="main-menu_wrapper">
-        <li class="main-menu_item"><%= link_to_unless_current 'Поиск', search_path %></li>
-        <li class="main-menu_item"><%= link_to_unless_current 'Мои билеты', tickets_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current t('common.nav.search'), search_path %></li>
+        <li class="main-menu_item"><%= link_to_unless_current t('common.nav.my_tickets'), tickets_path %></li>
         <%= render 'common/login_block' %>
       </ul>
     </nav>

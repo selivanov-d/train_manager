@@ -1,17 +1,24 @@
-<h1>Список станций</h1>
+<% @page_title = t '.title' %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+<div class="admin-stations">
+  <% if @railway_stations.any? %>
+      <table class="admin-stations_table admin-stations-table">
+        <thead>
+        <tr>
+          <th><%= RailwayStation.human_attribute_name(:name) %></th>
+          <th></th>
+        </tr>
+        </thead>
 
-  <tbody>
-    <%= render @railway_stations %>
-  </tbody>
-</table>
+        <tbody>
+        <%= render @railway_stations %>
+        </tbody>
+      </table>
+  <% else %>
+      <h4><%= t '.no_stations' %></h4>
+  <% end %>
 
-<br>
-
-<%= link_to 'Создать станцию', new_admin_railway_station_path %>
+  <div class="admin-stations_actions">
+    <%= link_to t('.create'), new_admin_railway_station_path, class: 'admin-stations_new-button' %>
+  </div>
+</div>

@@ -1,5 +1,9 @@
-<h1>Новый поезд</h1>
+<% @page_title = t ('.title') %>
 
-<%= render 'form' %>
+<div class="admin-trains-new">
+  <%= render 'form' %>
 
-<%= link_to 'К списку поездов', admin_trains_path %>
+  <div class="admin-trains-new_actions">
+    <%= link_to t('common.return_to_trains'), admin_trains_path, class: 'admin-trains-new_back-button' %>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+ru:
+  activerecord:
+    models:
+      railway_station: Станция
+      train: Поезд
+
+    attributes:
+      railway_station:
+        name: Название
+
+      train:
+        number: Номер
+        current_station: Текущая станция
+        position_from_head: Нумерация с головы поезда
+        route_id: Маршрут
+
+      route:
+        name: Название
+        position: Позиция
+        railway_station_ids: Станции
+
+      carriage:
+        train_id: Номер поезда
+        type: Тип вагона
+        position: Позиция
+        upper_seats: Верхние места
+        bottom_seats: Нижние места
+        side_bottom_seats: Боковые нижних места
+        side_upper_seats: Боковые верхних места
+        seating_seats: Сидячие места
+
+      user:
+        first_name: Имя
+        family_name: Фамилия
+        full_name: Имя
+        email: Email
+
+      railway_stations_route:
+        position: Позиция
+        departure_date_and_time: Дата и время отправления
+        arrival_date_and_time: Дата и время прибытия
+        station_name_and_departure_time: Станция и время отправления
+        station_name_and_arrive_time: Станция и время прибытия
+
+      ticket:
+        user_id: Покупатель
+        train_id: Поезд
+        departure_station_id: Станция отправления
+        arrival_station_id: Станция прибытия
+
+    errors:
+      messages:
+        blank: "Поле \"%{attribute}\" не должно быть пустым!"
+        taken: "Значение \"%{value}\" в поле \"%{attribute}\" занято!"
+        not_a_number: "Поле \"%{attribute}\" должно быть числом!"
+        greater_than: "Поле \"%{attribute}\" должно быть больше %{count}!"
+        invalid: "Поле \"%{attribute}» имеет неверный формат!"
+
+      models:
+        route:
+          attributes:
+            base:
+              not_enough_stations: Маршрут должен состоять как минимум из одной станции!
+

@@ -1,25 +1,31 @@
-<p>
-  <strong>Тип:</strong>
-  <%= @carriage.type_name %>
-</p>
+<% @page_title = t '.title', carriage_id: @carriage.id %>
 
-<p>
-  <strong>Поезд:</strong>
+<div class="admin-carriage-show">
+  <p>
+    <strong><%= Carriage.human_attribute_name(:type) %>:</strong>
+    <%= @carriage.type_name %>
+  </p>
+
+  <p>
+    <strong><%= t '.train_number' %>:</strong>
+    <% if @carriage.train.present? %>
+        <%= link_to @carriage.train.number, admin_train_path(@carriage.train) %>
+    <% else %>
+        <%= t '.not_attached' %>
+    <% end %>
+  </p>
+
   <% if @carriage.train.present? %>
-      <%= link_to @carriage.train.number, admin_train_path(@carriage.train) %>
-  <% else %>
-      Не прицеплен к поезду
+      <p>
+        <strong><%= Carriage.human_attribute_name(:position) %>:</strong>
+        <%= @carriage.position %>
+      </p>
   <% end %>
-</p>
 
-<% if @carriage.train.present? %>
-    <p>
-      <strong>Номер в составе:</strong>
-      <%= @carriage.position %>
-    </p>
-<% end %>
+  <%= render "admin/carriages/#{class_snake_case}_fields" %>
 
-<%= render "carriages/#{class_snake_case}_fields" %>
-
-<%= link_to 'Изменить', edit_admin_carriage_path(@carriage) %> |
-<%= link_to 'К списку вагонов', admin_train_carriages_path(@carriage.train) %>
+  <div class="admin-carriage-show_actions">
+    <%= link_to t('common.return_to_carriges'), admin_train_carriages_path(@carriage.train), class: 'admin-carriage-show_back-button' %>
+    <%= link_to t('common.edit'), edit_admin_carriage_path(@carriage), class: 'admin-carriage-show_edit-button' %>
+  </div>
+</div>

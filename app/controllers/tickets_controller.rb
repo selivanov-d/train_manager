@@ -14,12 +14,12 @@ class TicketsController < ApplicationController
 
     current_user.tickets << @ticket
 
-    redirect_to @ticket, notice: 'Билет создан!'
+    redirect_to @ticket, notice: t('.success_notice')
   end
 
   def destroy
     @ticket.destroy
-    redirect_to tickets_url, notice: 'Билет удалён!'
+    redirect_to tickets_url, notice: t('.success_notice')
   end
 
   private

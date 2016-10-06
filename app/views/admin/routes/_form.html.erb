@@ -1,19 +1,21 @@
-<% if @route.errors.any? %>
-    <%= render 'common/errors', resource: @route %>
+<% content_for :sidebar do %>
+    <% if @route.errors.any? %>
+        <%= render 'common/errors', resource: @route %>
+    <% end %>
 <% end %>
 
-<%= form_for [:admin, @route] do |f| %>
-    <div class="field">
-      <%= f.label :name, 'Название' %><br>
-      <%= f.text_field :name %>
+<%= form_for [:admin, @route], class: 'admin-route-form' do |f| %>
+    <div class="admin-route-form_input-row">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'admin-route-form_input' %>
     </div>
 
-    <div class="field">
-      <%= f.label :railway_station_ids, 'Станции' %><br>
-      <%= f.collection_select :railway_station_ids, RailwayStation.select(:id, :name).all, :id, :name, {}, { multiple: true } %>
+    <div class="admin-route-form_input-row">
+    <%= f.label :railway_station_ids %>
+    <%= f.collection_select :railway_station_ids, RailwayStation.select(:id, :name).all, :id, :name, {}, { multiple: true, class: 'admin-route-form_input' } %>
     </div>
 
     <div class="actions">
-      <%= f.submit 'Сохранить' %>
+      <%= f.submit t('common.submit'), class: 'admin-route-form_submit-button' %>
     </div>
 <% end %>

@@ -1,28 +1,33 @@
-<p>
-  <strong>Пассажир:</strong>
-  <%= link_to @ticket.user.full_name, admin_user_path(@ticket.user) %>
-</p>
+<% @page_title = t '.title', ticket_id: @ticket.id %>
 
-<p>
-  <strong>Номер поезда:</strong>
-  <%= link_to @ticket.train.number, train_path(@ticket.train) %>
-</p>
+<div class="admin-ticket-show">
+  <p>
+    <strong><%= Ticket.human_attribute_name(:user_id) %>:</strong>
+    <%= link_to @ticket.user.full_name, admin_user_path(@ticket.user) %>
+  </p>
 
-<p>
-  <strong>Станция отправления:</strong>
-  <%= @ticket.departure_station.name %>
-  <br>
-  <strong>Дата и время отправления:</strong>
-  <%= @ticket.train.route.station_in_route(@ticket.departure_station.id).departure_datetime.strftime('%d.%m.%Y %H:%M') %>
-</p>
+  <p>
+    <strong><%= Ticket.human_attribute_name(:train_id) %>:</strong>
+    <%= link_to @ticket.train.number, train_path(@ticket.train) %>
+  </p>
 
-<p>
-  <strong>Станция прибытия:</strong>
-  <%= @ticket.arrival_station.name %>
-  <br>
-  <strong>Дата и время прибытия:</strong>
-  <%= @ticket.train.route.station_in_route(@ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
-</p>
+  <p>
+    <strong><%= Ticket.human_attribute_name(:departure_station_id) %>:</strong>
+    <%= @ticket.departure_station.name %>
+    <br>
+    <strong><%= RailwayStationsRoute.human_attribute_name(:departure_date_and_time) %>:</strong>
+    <%= @ticket.train.route.station_in_route(@ticket.departure_station.id).departure_datetime.strftime('%d.%m.%Y %H:%M') %>
+  </p>
 
+  <p>
+    <strong><%= Ticket.human_attribute_name(:arrival_station_id) %>:</strong>
+    <%= @ticket.arrival_station.name %>
+    <br>
+    <strong><%= RailwayStationsRoute.human_attribute_name(:arrival_date_and_time) %>:</strong>
+    <%= @ticket.train.route.station_in_route(@ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
+  </p>
 
-<%= link_to 'Вернуться к пользователю', admin_user_path(@ticket.user) %>
+  <div class="admin-ticket-show_actions">
+    <%= link_to t('common.return_to_user'), admin_user_path(@ticket.user), class: 'admin-ticket-show_back-button' %>
+  </div>
+</div>

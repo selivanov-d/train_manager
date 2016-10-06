@@ -1,18 +1,20 @@
-<h1>Список поездов</h1>
+<% @page_title = t '.title' %>
 
-<table>
-  <thead>
+<div class="admin-train-index">
+  <table class="admin-train-index_table admin-train-index-table">
+    <thead>
     <tr>
-      <th>Номер</th>
-      <th colspan="3"></th>
+      <th><%= Train.human_attribute_name(:number) %></th>
+      <th></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <%= render @trains %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
-
-<%= link_to 'Создать новый поезд', new_admin_train_path %>
+  <div class="admin-train-index_actions">
+    <%= link_to t('.new'), new_admin_train_path, class: 'admin-train-index_new-button' %>
+  </div>
+</div>

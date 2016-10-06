@@ -1,26 +1,35 @@
-<h1><%= @user.full_name %></h1>
+<% @page_title = t '.title' %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="user-show">
+  <p>
+    <strong><%= User.human_attribute_name(:full_name) %>:</strong>
+    <%= @user.full_name %>
+  </p>
 
-<% if @user.tickets.present? %>
-    <p>&nbsp;</p>
-    <h3>Билеты</h3>
+  <p>
+    <strong><%= User.human_attribute_name(:email) %>:</strong>
+    <%= @user.email %>
+  </p>
 
-    <table>
-      <thead>
-      <th>Номер поезда</th>
-      <th>Станция и время отправления</th>
-      <th>Станция и время прибытия</th>
-      </thead>
-      <tbody>
+  <% if @user.tickets.present? %>
+      <h3>Билеты</h3>
+
+      <table class="user-show-tickets-table">
+        <thead>
+        <th><%= Train.human_attribute_name(:number) %></th>
+        <th><%= RailwayStationsRoute.human_attribute_name(:station_name_and_departure_time) %></th>
+        <th><%= RailwayStationsRoute.human_attribute_name(:station_name_and_arrive_time) %></th>
+        </thead>
+        <tbody>
         <%= render partial: 'tickets/ticket_as_table_row', collection: @user.tickets, as: :ticket %>
-      </tbody>
-    </table>
-<% else %>
-    <h3>У пользователя пока нет билетов</h3>
-<% end %>
+        </tbody>
+      </table>
+  <% else %>
+      <h3><%= t '.no_tickets' %></h3>
+  <% end %>
 
-<%= link_to 'Редактировать профиль', edit_user_path(@user) %>
+  <div class="user-show_actions">
+    <%= link_to t('common.return_to_search'), search_path, class: 'user-show_back-button' %>
+    <%= link_to t('common.edit'), edit_admin_user_path(@user), class: 'user-show_edit-button' %>
+  </div>
+</div>

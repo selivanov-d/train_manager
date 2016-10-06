@@ -1,28 +1,28 @@
 <p>
-  <strong>Название:</strong>
+  <strong><%= t Route.human_attribute_name(:name) %>:</strong>
   <%= @route.name %>
 </p>
 
 <p>
-  <strong>Поезда на этом маршруте:</strong>
+  <strong><%= t 'admin.routes.show.trains' %>:</strong>
   <% if @route.trains.present? %>
     <ul>
       <%= render partial: 'trains/train_as_list_item', collection: @route.trains, as: :train %>
     </ul>
 <% else %>
-    Поездов на маршруте нет
+    <%= t 'admin.routes.show.no_trains' %>
 <% end %>
 </p>
 
 <p>
-  <strong>Станции этого маршрута:</strong>
+  <strong><%= t 'admin.routes.show.stations' %>:</strong>
   <% if @route.railway_stations.present? %>
     <table class="route-stations">
       <thead>
-      <th>Позиция</th>
-      <th>Название</th>
-      <th>Время прибытия</th>
-      <th>Время отправления</th>
+      <th><%= RailwayStationsRoute.human_attribute_name(:position) %></th>
+      <th><%= RailwayStation.human_attribute_name(:name) %></th>
+      <th><%= RailwayStationsRoute.human_attribute_name(:arrival_date_and_time) %></th>
+      <th><%= RailwayStationsRoute.human_attribute_name(:departure_date_and_time) %></th>
       </thead>
       <tbody>
       <%= render partial: 'railway_stations/railway_station_as_table_row',
@@ -31,6 +31,6 @@
       </tbody>
     </table>
 <% else %>
-    Станций в маршруте нет
+    <%= t 'admin.routes.show.no_stations' %>
 <% end %>
 </p>

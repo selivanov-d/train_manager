@@ -1,0 +1,61 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+
+  devise:
+    sessions:
+      new:
+        title: Войти
+        remember_me: Запомнить меня
+        login: Войти
+
+    registrations:
+      new:
+        title: Зарегистрироваться
+        singup: Зарегистрироваться
+        minimal_length: "%{minimal_length} символов минимум"
+
+      edit:
+        title: "Редактировать %{resource_name} %>"
+        submit: Обновить
+        delete_account: Удалить мой аккаунт
+        current_password: укажите свой текущий пароль, чтобы подтвердить вносимые изменения
+        minimal_length: минимальная длина %{minimal_length} символов
+        leave_blank: оставьте пустым если не хотите менять
+        waiting_for_confirmation: Ожидаем подтверждения от %{email}
+        not_like: Не понравился наш сервис?
+
+    confirmations:
+      new:
+        title: Повторно выслать инструкции по подтверждению регистрации
+        send_instructions: Выслать инструкции
+
+    passwords:
+      new:
+        title: Забыли пароль?
+        send_me_instructions: Отправить мне инструкции по сбросу пароля
+
+      edit:
+        title: Изменить пароль
+        submit: Изменить мой пароль
+        minimal_length: "%{minimal_length} символов минимум"
+
+    unlocks:
+      new:
+        title: Повторно выслать инструкции по разблокирыванию аккаунта
+        send_instructions: Выслать инструкции
+
+    shared:
+      links:
+        log_in: Войти
+        register: Зарегистрироваться
+        forgot_password: Забыли пароль?
+        didnt_received_confirmation_instructions: Не получили инструкций по подтверждению регистрации?
+        didnt_received_unlock_instructions: Не получили инструкций по разблокированию аккаунта?
+        register_by: "Зарегистрироваться через %{provider}"
+
+

@@ -1,6 +1,14 @@
 <tr>
-    <td><%= railway_station.name %></td>
-    <td><%= link_to 'Смотреть', admin_railway_station_path(railway_station) %></td>
-    <td><%= link_to 'Редактировать', edit_admin_railway_station_path(railway_station) %></td>
-    <td><%= link_to 'Удалить', admin_railway_station_path(railway_station), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td><%= railway_station.name %></td>
+  <td class="admin-stations-table_controls">
+    <%= link_to admin_railway_station_path(railway_station) do
+      bs_icon 'eye-open', tooltip: t('common.show')
+    end %>
+    <%= link_to edit_admin_railway_station_path(railway_station) do
+      bs_icon :pencil, tooltip: t('common.edit')
+    end %>
+    <%= link_to admin_railway_station_path(railway_station), method: :delete, data: { confirm: t('common.are_you_sure') } do
+      bs_icon :remove, tooltip: t('common.destroy')
+    end %>
+  </td>
 </tr>

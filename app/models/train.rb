@@ -4,7 +4,7 @@ class Train < ActiveRecord::Base
   has_many :tickets, dependent: :destroy
   has_many :carriages, dependent: :nullify
 
-  validates :number, presence: { message: 'У поезда должен быть номер!' }
+  validates :number, presence: true
 
   def count_seats(carriage_type, seats_type)
     raise ArgumentError unless Carriage::TYPES.include? carriage_type

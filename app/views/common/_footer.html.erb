@@ -1,5 +1,5 @@
 <footer class="footer">
   <div class="footer_wrapper">
-    &copy; <%= Time.new.year %> Дмитрий Селиванов. Учебный проект в <%= link_to 'онлайн-школе Thinknetica', 'http://www.thinknetica.com/', target: '_blank' %>
+    <%= raw(t('common.footer_copyright', year: Time.new.year, link_to_thinknetica: link_to('онлайн-школе Thinknetica', 'http://www.thinknetica.com/', target: '_blank'))) %>
   </div>
 </footer>

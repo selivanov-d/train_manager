@@ -1,15 +1,14 @@
-<h1>Список вагонов</h1>
+<% @page_title = t '.title', train_number: @train.number %>
 
 <table>
   <thead>
   <tr>
-    <th>Тип</th>
-    <th>Поезд</th>
-    <th>Верхних мест</th>
-    <th>Нижних мест</th>
-    <th>Боковых верхних мест</th>
-    <th>Боковых нижних мест</th>
-    <th>Сидячих мест</th>
+    <th><%= Carriage.human_attribute_name(:type) %></th>
+    <th><%= Carriage.human_attribute_name(:upper_seats) %></th>
+    <th><%= Carriage.human_attribute_name(:bottom_seats) %></th>
+    <th><%= Carriage.human_attribute_name(:side_upper_seats) %></th>
+    <th><%= Carriage.human_attribute_name(:side_bottom_seats) %></th>
+    <th><%= Carriage.human_attribute_name(:seating_seats) %></th>
     <th colspan="3"></th>
   </tr>
   </thead>
@@ -18,26 +17,17 @@
   <% @carriages.each do |carriage| %>
       <tr>
         <td><%= carriage.type_name %></td>
-        <td>
-          <% if carriage.train.present? %>
-              <%= link_to carriage.train.number, admin_train_path(carriage.train) %>
-          <% else %>
-              --
-          <% end %>
-        </td>
         <td><%= carriage.upper_seats %></td>
         <td><%= carriage.bottom_seats %></td>
         <td><%= carriage.side_upper_seats %></td>
         <td><%= carriage.side_bottom_seats %></td>
         <td><%= carriage.seating_seats %></td>
-        <td><%= link_to 'Смотреть', admin_carriage_path(carriage) %></td>
-        <td><%= link_to 'Редактировать', edit_admin_carriage_path(carriage) %></td>
-        <td><%= link_to 'Удалить', admin_carriage_path(carriage), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <td><%= link_to t('common.show'), admin_carriage_path(carriage) %></td>
+        <td><%= link_to t('common.edit'), edit_admin_carriage_path(carriage) %></td>
+        <td><%= link_to t('common.destroy'), admin_carriage_path(carriage), method: :delete, data: { confirm: t('common.are_you_sure') } %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Создать вагон', new_admin_train_carriage_path %>
+<%= link_to t('.new'), new_admin_train_carriage_path %>

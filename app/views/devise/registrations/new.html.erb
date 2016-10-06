@@ -1,38 +1,42 @@
-<h2>Зарегистрироваться</h2>
+<% @page_title = t '.title' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+<% content_for :sidebar do %>
+    <% if @user.errors.any? %>
+        <%= render 'common/errors', resource: @user %>
+    <% end %>
+<% end %>
 
-    <div class="field">
-      <%= f.label :first_name %><br/>
-      <%= f.text_field :first_name %>
+<%= form_for resource, as: resource_name, url: registration_path(resource_name), class: 'devise-user-signup-form' do |f| %>
+    <div class="devise-user-signup-form_input-row">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'devise-user-signup-form_input' %>
     </div>
 
-    <div class="field">
-      <%= f.label :family_name %><br/>
-      <%= f.text_field :family_name %>
+    <div class="devise-user-signup-form_input-row">
+      <%= f.label :family_name %>
+      <%= f.text_field :family_name, class: 'devise-user-signup-form_input' %>
     </div>
 
-    <div class="field">
-      <%= f.label :email %><br/>
-      <%= f.email_field :email, autofocus: true %>
+    <div class="devise-user-signup-form_input-row">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, class: 'devise-user-signup-form_input' %>
     </div>
 
-    <div class="field">
+    <div class="devise-user-signup-form_input-row">
       <%= f.label :password %>
       <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> символов минимум)</em>
+          <em>(<%= t '.minimal_length', minimal_length: @minimum_password_length %>)</em>
       <% end %><br/>
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password, autocomplete: "off", class: 'devise-user-signup-form_input' %>
     </div>
 
-    <div class="field">
+    <div class="devise-user-signup-form_input-row">
       <%= f.label :password_confirmation %><br/>
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'devise-user-signup-form_input' %>
     </div>
 
-    <div class="actions">
-      <%= f.submit 'Зарегистрироваться' %>
+    <div class="devise-user-signup-form_actions">
+      <%= f.submit t('.singup'), class: 'devise-user-signup-form_submit-button' %>
     </div>
 <% end %>
 

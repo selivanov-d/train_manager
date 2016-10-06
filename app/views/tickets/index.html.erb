@@ -1,39 +1,48 @@
-<h1>Мои билеты</h1>
+<% @page_title = t '.title' %>
 
-<% if @tickets.any? %>
-    <table>
-      <thead>
-      <tr>
-        <th>Номер поезда</th>
-        <th>Станция и время отправления</th>
-        <th>Станция и время прибытия</th>
-        <th colspan="3"></th>
-      </tr>
-      </thead>
+<div class="ticket-index">
+  <% if @tickets.any? %>
+      <table class="tickets-index-table">
+        <thead>
+        <tr>
+          <th><%= Train.human_attribute_name(:number) %></th>
+          <th><%= RailwayStationsRoute.human_attribute_name(:station_name_and_departure_time) %></th>
+          <th><%= RailwayStationsRoute.human_attribute_name(:station_name_and_arrive_time) %></th>
+          <th></th>
+        </tr>
+        </thead>
 
-      <tbody>
-      <% @tickets.each do |ticket| %>
-          <tr>
-            <td><%= link_to ticket.train.number, train_path(ticket.train) %></td>
-            <td>
-              <%= ticket.departure_station.name %>
-              <br/>
-              <%= ticket.train.route.station_in_route(ticket.departure_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
-            </td>
-            <td>
-              <%= ticket.arrival_station.name %>
-              <br/>
-              <%= ticket.train.route.station_in_route(ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
-            </td>
-            <td><%= link_to 'Смотреть', ticket %></td>
-            <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-<% else %>
-    <h3>У вас пока что нет ни одного билета.</h3>
-<% end %>
-<br>
+        <tbody>
+        <% @tickets.each do |ticket| %>
+            <tr>
+              <td><%= link_to ticket.train.number, train_path(ticket.train) %></td>
+              <td>
+                <%= ticket.departure_station.name %>
+                <br/>
+                <%= ticket.train.route.station_in_route(ticket.departure_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
+              </td>
+              <td>
+                <%= ticket.arrival_station.name %>
+                <br/>
+                <%= ticket.train.route.station_in_route(ticket.arrival_station.id).arrival_datetime.strftime('%d.%m.%Y %H:%M') %>
+              </td>
+              <td class="tickets-index-table_controls">
+                <%= link_to ticket_path(ticket) do
+                  bs_icon 'eye-open', tooltip: t('common.show')
+                end %>
+                <%= link_to ticket_path(ticket), method: :delete, data: { confirm: t('common.are_you_sure') } do
+                  bs_icon :remove, tooltip: t('common.destroy')
+                end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% else %>
+      <h3><%= t '.no_tickets' %></h3>
+  <% end %>
 
-<%= link_to 'К поиску', search_path %>
+  <div class="my-tickets_actions">
+    <%= link_to t('common.return_to_search'), search_path, class: 'ticket-index_back-button' %>
+  </div>
+</div>

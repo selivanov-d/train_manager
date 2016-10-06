@@ -1,29 +1,32 @@
-<h1>Поиск поездов по маршруту "<%= station_name_by_id(@search.departure_station_id) %>–<%= station_name_by_id(@search.arrival_station_id) %>"</h1>
+<% @page_title = "Поиск поездов по маршруту \"#{station_name_by_id(@search.departure_station_id)} – #{station_name_by_id(@search.arrival_station_id)}\"" %>
 
 <% if @search.errors.any? %>
-    <%= render 'common/errors', resource: @search %>
+    <% content_for :sidebar do %>
+        <%= render 'common/errors', resource: @search %>
+    <% end %>
 <% end %>
 
 <%= render 'form' %>
 
-<% if @search.result.present? %>
-    <table>
-      <thead>
-      <th>Номер поезда</th>
-      <th>Маршрут</th>
-      <th>Время отправления<br/><span class="station-name-comment">со станции "<%= station_name_by_id(@search.departure_station_id) %>"</span></th>
-      <th>Время прибытия<br/><span class="station-name-comment">на станции "<%= station_name_by_id(@search.arrival_station_id) %>"</span></th>
-      <th></th>
-      </thead>
-      <tbody>
-      <%= render partial: 'result_item', collection: @search.result, as: :train,
-          locals: {
-            departure_station_id: @search.departure_station_id,
-              arrival_station_id: @search.arrival_station_id
-          } %>
-      </tbody>
-    </table>
-<% else %>
-    <p>По заданным критериям не найдено ни одного поезда.</p>
-<% end %>
-
+<div class="search-result">
+  <% if @search.result.present? %>
+      <table class="search-result-table">
+        <thead>
+        <th><%= t '.train' %></th>
+        <th><%= t '.route' %></th>
+        <th><%= t '.departure_datetime', station_name: station_name_by_id(@search.departure_station_id) %></th>
+        <th><%= t '.arrival_datetime', station_name: station_name_by_id(@search.arrival_station_id) %></th>
+        <th></th>
+        </thead>
+        <tbody>
+        <%= render partial: 'result_item', collection: @search.result, as: :train,
+            locals: {
+                departure_station_id: @search.departure_station_id,
+                arrival_station_id: @search.arrival_station_id
+            } %>
+        </tbody>
+      </table>
+  <% else %>
+      <p><%= t '.no_results' %></p>
+  <% end %>
+</div>

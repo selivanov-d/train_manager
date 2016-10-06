@@ -1,5 +1,9 @@
-<h1>Изменить маршрут</h1>
+<% @page_title = t '.title', route_name: @route.name %>
 
-<%= render 'form' %>
+<div class="admin-route-edit">
+  <%= render 'form' %>
 
-<%= link_to 'К списку маршрутов', admin_routes_path %>
+  <div class="admin-route-edit_actions">
+    <%= link_to t('common.return_to_routes'), admin_routes_path, class: 'admin-route-edit_back-button' %>
+  </div>
+</div>

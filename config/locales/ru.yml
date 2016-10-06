@@ -1,0 +1,270 @@
+ru:
+  date:
+    month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
+    order:
+      - year
+      - month
+      - day
+
+  common:
+    year: Год
+    month: Месяц
+    day: День
+
+    return_to_search: К поиску
+    return_to_user: К пользователю
+    return_to_users: К списку пользователей
+    return_to_carriges: К списку вагонов
+    return_to_routes: К списку маршрутов
+    return_to_railway_stations: К списку станций
+    return_to_trains: К списку поездов
+    back: Назад
+
+    edit: Редактировать
+    show: Смотреть
+    view: Смотреть
+    destroy: Удалить
+    submit: Сохранить
+    are_you_sure: Вы уверены?
+
+    make_search: Найти
+
+    log_out: Выйти
+    log_in: Войти
+
+    errors_header: Следующие ошибки помешали сохранению
+
+    footer_copyright: "&copy; %{year} Дмитрий Селиванов. Учебный проект в %{link_to_thinknetica}"
+
+    nav:
+      trains: Поезда
+      stations: Станции
+      routes: Маршруты
+      tickets: Билеты
+      users: Пользователи
+      search: Поиск
+      my_tickets: Мои билеты
+
+  trains:
+    show:
+      title: "Поезд №%{train_number}"
+      carriages: Прицепленные вагоны
+
+  tickets:
+    index:
+      title: Мои билеты
+      no_tickets: У вас пока что нет ни одного билета.
+
+    show:
+      title: Билет №%{ticket_id}
+
+    create:
+      success_notice: Билет создан!
+
+    destroy:
+      success_notice: Билет удалён!
+
+  carriages:
+    show:
+      title: "Вагон №%{carriage_number}"
+      no_train: Не прицеплен к поезду
+
+  searches:
+    new:
+      title: Новый поиск
+
+    show_results:
+      no_results: По заданным критериям не найдено ни одного поезда.
+      route: Маршрут
+      train: Поезд
+      departure_datetime: "Время отправления со станции \"%{station_name}\""
+      arrival_datetime: "Время прибытия на станцию \"%{station_name}\""
+
+    result_item:
+      buy: Купить билет
+
+    form:
+      unavailable: Пока что поиск не работает, т.к. ленивый администратор не добавил достаточного количества данных.
+
+  routes:
+    index:
+      title: Список маршрутов
+      name: Название
+
+  users:
+    show:
+      title: Мой аккаунт
+      no_tickets: У пользователя пока нет билетов
+
+    edit:
+      title: Редактирование моего аккаунта
+
+    update:
+      success_notice: Пользователь успешно обновлён!
+
+  admin:
+    users:
+      index:
+        title: Список пользователей
+
+      show:
+        title: "Пользователь \"%{user_name}\""
+        tickets: Билеты
+        no_tickets: У пользователя пока нет билетов
+
+      new:
+        title: Новый пользователь
+
+      edit:
+        title: "Редактирование пользователя \"%{user_name}\""
+
+      create:
+        success_notice: Пользователь успешно создан!
+
+      update:
+        success_notice: Пользователь успешно обновлён!
+
+      destroy:
+        success_notice: Пользователь удалён!
+
+    trains:
+      new:
+        title: Новый поезд
+
+      index:
+        title: Список поездов
+        new: Создать новый поезд
+
+      edit:
+        title: "Редактирование поезда №%{train_number}"
+
+      show:
+        title: "Поезд №%{train_number}"
+        no_route: Маршрут не назначен
+        carriages: Прицепленные вагоны
+        no_carriages: Прицепленных вагонов нет
+        add_carriage: Добавить вагон
+
+      form:
+        no_route: Без маршрута
+
+      create:
+        success_notice: Поезд создан!
+
+      update:
+        success_notice: Поезд обновлён!
+
+      destroy:
+        success_notice: Поезд удалён!
+
+    tickets:
+      new:
+        title: Информация о покупателе
+
+      show:
+        title: "Данные билеты №%{ticket_id}"
+
+      index:
+        title: Список всех билетов
+        no_tickets: Пока что не куплено ни одного билета
+
+      destroy:
+        success_notice: Билет удалён!
+
+    railway_stations:
+      index:
+        title: Список станций
+        create: Создать станцию
+        no_stations: Пока что нет ни одной станции
+
+      edit:
+        title: "Редактирование станции \"%{station_name}\""
+
+      new:
+        title: Новая станция
+
+      show:
+        title: "Станция \"%{station_name}\""
+        trains: Поезда на станции
+        no_trains: Поездов на станции нет!
+
+      create:
+        success_notice: Станция создана!
+
+      update:
+        success_notice: Станция обновлена
+
+      destroy:
+        success_notice: Станция удалена!
+
+      update_position:
+        success_notice: Позиция обновлена!
+        fail_alert: Не удалось обновить позицию! Проверьте, что она не совпадает с другой.
+
+      update_departure_datetime:
+        success_notice: Время отправления обновлено!
+        fail_alert: Не удалось обновить дату отправления! Проверьте, что она задана, находится в будущем и идёт после даты отправления.
+        wrong_datetime_format: Незаполена дата отправления!
+
+      update_arrival_datetime:
+        success_notice: Время прибытия обновлено!
+        fail_alert: Не удалось обновить дату прибытия! Проверьте, что она задана, находится в будущем и идёт до даты прибытия.
+        wrong_datetime_format: Незаполена дата прибытия!
+
+    routes:
+      index:
+        title: Список маршрутов
+        create: Создать маршрут
+        name: Название
+
+      edit:
+        title: "Изменить маршрут \"%{route_name}\""
+
+      new:
+        title: Создать маршрут
+
+      show:
+        title: "Маршрут \"%{route_name}\""
+        no_stations: Станций в маршруте нет
+        no_trains: Поездов на маршруте нет
+        trains: Поезда на этом маршруте
+        stations: Станции этого маршрута
+        position: Позиция
+
+      create:
+        success_notice: Маршрут создан!
+
+      update:
+        success_notice: Маршрут обновлён
+
+      destroy:
+        success_notice: Маршрут удалён!
+
+    carriages:
+      new_submit: Создать вагон
+
+      new:
+        title: Новый вагон
+
+      show:
+        title: "Вагон №%{carriage_id}"
+        type_name: Тип
+        train_number: Номер поезда
+        not_attached: Не прицеплен к поезду
+        position: Номер в составе
+
+      index:
+        title: "Список вагонов поезда №%{train_number}"
+        new: Добавить вагон
+
+      edit:
+        title: Редактирование вагона
+
+      create:
+        success_notice: Вагон создан!
+
+      update:
+        success_notice: Вагон обновлён!
+
+      destroy:
+        success_notice: Вагон удалён!

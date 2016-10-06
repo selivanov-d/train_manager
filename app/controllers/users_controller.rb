@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'Ваш профиль успешно обновлён!'
+      redirect_to admin_user_path(@user), notice: t('.success_notice')
     else
       render :edit
     end

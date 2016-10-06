@@ -1,20 +1,22 @@
+<% @page_title = t '.title', carriage_number: @carriage.id %>
+
 <p>
-  <strong>Тип:</strong>
+  <strong><%= Carriage.human_attribute_name(:type) %>:</strong>
   <%= @carriage.type_name %>
 </p>
 
 <p>
-  <strong>Поезд:</strong>
+  <strong><%= Carriage.human_attribute_name(:train_id) %>:</strong>
   <% if @carriage.train.present? %>
       <%= link_to @carriage.train.number, @carriage.train %>
   <% else %>
-      Не прицеплен к поезду
+      <%= t '.no_train' %>
   <% end %>
 </p>
 
 <% if @carriage.train.present? %>
     <p>
-      <strong>Номер в составе:</strong>
+      <strong><%= Carriage.human_attribute_name(:position) %>:</strong>
       <%= @carriage.position %>
     </p>
 <% end %>

@@ -1,24 +1,28 @@
-<% if @train.errors.any? %>
-    <%= render 'common/errors', resource: @train %>
+<% content_for :sidebar do %>
+    <% if @train.errors.any? %>
+        <%= render 'common/errors', resource: @train %>
+    <% end %>
 <% end %>
 
-<%= form_for [:admin, @train] do |f| %>
-    <div class="field">
-      <%= f.label :number, 'Номер' %><br>
-      <%= f.text_field :number %>
+<%= form_for [:admin, @train], class: 'admin-train-form' do |f| %>
+    <div class="admin-train-form_input-row">
+      <%= f.label :number %>
+      <%= f.text_field :number, class: 'admin-train-form_input' %>
     </div>
 
-    <div class="field">
-      <%= f.check_box :position_from_head %>
-      <%= f.label :position_from_head, 'Нумерация с головы поезда' %>
+    <div class="admin-train-form_checkbox-wrapper">
+      <%= f.label :position_from_head do %>
+          <%= f.check_box :position_from_head %>
+          <%= Train.human_attribute_name(:position_from_head) %>
+      <% end %>
     </div>
 
-    <div class="field">
-      <%= f.label :route, 'Маршрут' %><br>
-      <%= f.collection_select :route_id, Route.select(:id, :name).all, :id, :name, include_blank: 'Без маршрута' %>
+    <div class="admin-train-form_input-row">
+      <%= f.label :route_id %>
+      <%= f.collection_select :route_id, Route.select(:id, :name).all, :id, :name, { include_blank: t('.no_route') }, class: 'admin-train-form_input' %>
     </div>
 
     <div class="actions">
-      <%= f.submit 'Сохранить' %>
+      <%= f.submit t('common.submit'), class: 'admin-train-form_submit-button' %>
     </div>
 <% end %>
