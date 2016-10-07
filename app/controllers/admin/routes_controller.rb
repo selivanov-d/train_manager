@@ -38,6 +38,20 @@ class Admin::RoutesController < Admin::BaseController
     redirect_to admin_routes_path, notice: t('.success_notice')
   end
 
+  def update_name
+    route = Route.find(params[:id])
+
+    route.name = ActionController::Base.helpers.sanitize(params[:name].squish)
+
+    respond_to do |format|
+      if route.save
+        format.json { render nothing: true, status: :ok}
+      else
+        format.json { render json: route.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def set_route

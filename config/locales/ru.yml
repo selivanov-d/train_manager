@@ -159,6 +159,10 @@ ru:
       destroy:
         success_notice: Поезд удалён!
 
+      form_name_only:
+        edit_name: Изменить название
+        popover_title: Редактирование номера поезда
+
     tickets:
       new:
         title: Информация о покупателе
@@ -241,6 +245,10 @@ ru:
 
       destroy:
         success_notice: Маршрут удалён!
+
+      form_name_only:
+        edit_name: Изменить название
+        popover_title: Редактирование названия маршрута
 
     carriages:
       new_submit: Создать вагон

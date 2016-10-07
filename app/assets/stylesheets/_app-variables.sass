@@ -51,3 +51,15 @@ $font-size-h6: ceil(($font-size-base * 0.9))
   &_new-button
     @extend .btn, .btn-success
 
+@mixin inline-editable-field
+  &.-edit-off
+    color: $link-color
+    border-color: transparent
+    border-bottom: 1px dashed $link-color
+    cursor: pointer
+
+    &:hover
+      border-bottom-color: transparent
+
+  &.-edit-on
+    @extend .form-control
