@@ -4,7 +4,7 @@
   <%= render partial: 'form', locals: { class_name: class_name } %>
 
   <div class="admin-carriage-edit_actions">
-    <%= link_to t('common.return_to_carriges'), admin_train_carriages_path(@carriage.train), class: 'admin-carriage-edit_back-button' %>
+    <%= link_to t('common.return_to_train'), admin_train_path(@carriage.train), class: 'admin-carriage-edit_back-button' %>
     <%= link_to t('common.show'), admin_carriage_path(@carriage), class: 'admin-carriage-edit_show-button' %>
   </div>
 </div>

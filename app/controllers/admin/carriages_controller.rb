@@ -15,7 +15,7 @@ class Admin::CarriagesController < Admin::BaseController
   end
 
   def edit
-    render :edit, locals: { class_name: @carriage.class.name.demodulize }
+    render :edit, locals: { class_name: @carriage.class.name.demodulize.downcase }
   end
 
   def create
