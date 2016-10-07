@@ -1,0 +1,7 @@
+<p><%= t '.greeting', user_name: @user.first_name %></p>
+
+<p><%= t '.bought_ticket_message', route_name: @ticket.train.route.name %></p>
+
+<p><%= raw(t '.ticket_show_message', ticket_link: link_to(t('common.here'), ticket_url(@ticket), target: '_blank')) %></p>
+
+<p><%= raw(t '.all_tickets_message', link_to_all_tickets: link_to(t('common.here'), tickets_url, target: '_blank')) %></p>
