@@ -18,6 +18,7 @@ ru:
     return_to_routes: К списку маршрутов
     return_to_railway_stations: К списку станций
     return_to_trains: К списку поездов
+    return_to_train: К поезду
 
     back: Назад
     here: здесь
@@ -159,6 +160,10 @@ ru:
       destroy:
         success_notice: Поезд удалён!
 
+      form_name_only:
+        edit_name: Изменить название
+        popover_title: Редактирование номера поезда
+
     tickets:
       new:
         title: Информация о покупателе
@@ -241,6 +246,10 @@ ru:
 
       destroy:
         success_notice: Маршрут удалён!
+
+      form_name_only:
+        edit_name: Изменить название
+        popover_title: Редактирование названия маршрута
 
     carriages:
       new_submit: Создать вагон

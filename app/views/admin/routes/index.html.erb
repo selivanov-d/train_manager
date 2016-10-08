@@ -12,7 +12,11 @@
     <tbody>
     <% @routes.each do |route| %>
         <tr>
-          <td><%= route.name %></td>
+          <td>
+            <%= render partial: 'form_name_only', locals: { route: route } %>
+
+
+          </td>
           <td class="admin-routes-index-table_controls">
             <%= link_to admin_route_path(route) do
               bs_icon 'eye-open', tooltip: t('common.show')

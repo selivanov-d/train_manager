@@ -12,11 +12,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :routes
+    resources :routes do
+      put 'update_name' => 'routes#update_name'
+    end
     resources :tickets
 
     resources :trains do
       resources :carriages, shallow: true
+      put 'update_name' => 'trains#update_name'
     end
 
     resources :railway_stations do

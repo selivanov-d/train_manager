@@ -38,6 +38,20 @@ class Admin::TrainsController < Admin::BaseController
     redirect_to admin_trains_url, notice: t('.success_notice')
   end
 
+  def update_name
+    train = Train.find(params[:id])
+
+    train.number = ActionController::Base.helpers.sanitize(params[:name].squish)
+
+    respond_to do |format|
+      if train.save
+        format.json { render nothing: true, status: :ok}
+      else
+        format.json { render json: train.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def set_train

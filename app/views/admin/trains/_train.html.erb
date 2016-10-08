@@ -1,5 +1,7 @@
 <tr>
-  <td><%= train.number %></td>
+  <td>
+    <%= render partial: 'form_name_only', locals: { train: train } %>
+  </td>
   <td class="admin-train-index-table_controls">
     <%= link_to admin_train_path(train) do
       bs_icon 'eye-open', tooltip: t('common.show')
